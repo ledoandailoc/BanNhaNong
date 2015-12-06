@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--Common-->
+    <color name="common_bg_color">#f1f1f1</color>
+    <color name="common_text_color">#000</color>
+    <color name="common_grey_text_color">#5c5c5c</color>
+    <color name="common_grey_pressed_text_color">@color/md_grey_400</color>
+    <color name="common_app_main_color">#ee5900</color>
+    <color name="common_main_blue_btn_color">#32d0bf</color>
+    <color name="common_main_blue_btn_pressed_color">@color/md_blue_300</color>
+    <color name="common_main_white_btn_color">#FFFFFF</color>
+    <color name="common_main_transparent_color">#00000000</color>
+
+    <!-- Action Bar -->
+    <color name="action_bar_bg_color">@color/common_app_main_color</color>
+    <color name="action_bar_bg_selected_color">#6470b5</color>
+    <color name="action_bar_title_color">#fff</color>
+
+    <!--Main-->
+    <color name="main_bottom_menu_bg_color">#90000000</color>
+
+    <!-- Tab -->
+    <color name="tab_bg_color">#fff</color>
+    <color name="tab_text_color">#afafaf</color>
+    <color name="tab_text_active_color">#000000</color>
+
+</resources>

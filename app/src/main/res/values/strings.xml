@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BanNongNghiep</string>
+
+    <!-- Home Fragment -->
+    <string name="home_title">BanNongNghiep</string>
+
+    <!-- Tab -->
+    <string name="tab_home">Home</string>
+    <string name="tab_activity">Monitor</string>
+    <string name="tab_training">Training</string>
+    <string name="tab_map">Location</string>
+
+</resources>
