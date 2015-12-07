@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Ban Nha Nong</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Tabar -->
+    <string name="tab_price_name">Price</string>
 </resources>

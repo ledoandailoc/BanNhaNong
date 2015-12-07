@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- Tab -->
+    <color name="tab_bg_color">#fff</color>
+    <color name="tab_text_color">#afafaf</color>
+    <color name="tab_text_active_color">#000000</color>
 </resources>

@@ -3,4 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Tabbar -->
+    <dimen name="tab_height">55dp</dimen>
+    <dimen name="icon_height_tab">30dp</dimen>
+    <dimen name="label_text_size_tab">11sp</dimen>
 </resources>
