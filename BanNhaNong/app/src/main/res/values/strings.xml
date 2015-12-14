@@ -4,4 +4,7 @@
 
     <!-- Tabar -->
     <string name="tab_price_name">Price</string>
+    <string name="tab_market_name">Market</string>
+    <string name="tab_workshop_name">Workshop</string>
+    <string name="tab_map_name">Location</string>
 </resources>
