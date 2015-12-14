@@ -22,8 +22,13 @@
     <dimen name="icon_height_tab">30dp</dimen>
     <dimen name="label_text_size_tab">11sp</dimen>
 
+    <!-- Tabbar in Market -->
+    <dimen name="tab_market_height">40dp</dimen>
+    <dimen name="label_text_size_tab_market">11sp</dimen>
+    <dimen name="tab_divider">4dp</dimen>
+
     <!-- Actionbar -->
     <dimen name="actionbar_height">50dp</dimen>
     <dimen name="actionbar_title_size">25dp</dimen>
-    <dimen name="actionbar_ic_setting_size">35dp</dimen>
+    <dimen name="actionbar_ic_setting_size">28dp</dimen>
 </resources>
