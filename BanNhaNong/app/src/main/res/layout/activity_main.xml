@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/main_bottom_tab_container"
-            android:layout_alignTop="@+id/main_menu_btn">
+            android:layout_below="@+id/actionbar">
 
         </FrameLayout>
 
