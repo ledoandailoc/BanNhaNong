@@ -6,16 +6,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.uit.bannhanong.DTO.Agricultural;
 import com.example.uit.bannhanong.R;
+import com.example.uit.bannhanong.adapter.AgriculturalPriceAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DomesticPriceFragment extends BaseMainFragment {
+
     SearchView searchView;
+    private ListView mLvAgricultural;
+    ArrayList<Agricultural> listAgricultual;
     
     public static DomesticPriceFragment newInstance() {
         return new DomesticPriceFragment();
@@ -34,6 +43,7 @@ public class DomesticPriceFragment extends BaseMainFragment {
 
     @Override
     protected void initContentViews(View view) {
+        mLvAgricultural = CommonUtils.findViewById(view, R.id.lv_agricultural);
     }
 
     @Override
@@ -44,6 +54,30 @@ public class DomesticPriceFragment extends BaseMainFragment {
     @Override
     protected void initData() {
 
+        // Test
+        String[] name = {"Cà phê","Cao su","Điều","Tiêu", "Lúa"};
+        int[] priceDo = {70000, 100000,30000, 200000, 8000};
+        int[] priceIn = {12, 34,53, 34, 55};
+        String[] unit = {"1kg","1kg","1kg","1kg", "1kg"};
+        String[] status = {"increase","increase","decrease","increase", "decrease"};
+
+        listAgricultual = new ArrayList<>();
+        for (int n = 0; n < name.length; n++)
+        {
+            Agricultural agricultural = new Agricultural();
+            agricultural.name = name[n];
+            agricultural.priceDomestic = priceDo[n];
+            agricultural.priceInternational = priceIn[n];
+            agricultural.unit = unit[n];
+            agricultural.status = status[n];
+
+            listAgricultual.add(agricultural);
+        }
+
+        // end test
+
+        AgriculturalPriceAdapter adapter = new AgriculturalPriceAdapter(getContext(), R.layout.item_price_agricultural, listAgricultual);
+        mLvAgricultural.setAdapter(adapter);
     }
 
 
