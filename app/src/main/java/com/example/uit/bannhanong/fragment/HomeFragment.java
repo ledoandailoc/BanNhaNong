@@ -62,6 +62,23 @@ public class HomeFragment extends BaseMainFragment {
         mPagerAdapter = new AgriculturePricePagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(mPagerAdapter);
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                selectTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void attachTab(View v) {
@@ -80,16 +97,14 @@ public class HomeFragment extends BaseMainFragment {
         mRlTabDomestic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                unSelectAllTab();
-                mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color_active));
+                selectTab(0);
                 viewPager.setCurrentItem(0);
             }
         });
         mRlTabInternational.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                unSelectAllTab();
-                mLnTabInternational.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color_active));
+                selectTab(1);
                 viewPager.setCurrentItem(1);
             }
         });
@@ -100,6 +115,16 @@ public class HomeFragment extends BaseMainFragment {
     private void unSelectAllTab() {
         mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color));
         mLnTabInternational.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color));
+    }
+
+    private void selectTab(int position){
+        unSelectAllTab();
+        if(position == 0){
+            mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+        }
+        else if(position == 1){
+            mLnTabInternational.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+        }
     }
 
     public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
