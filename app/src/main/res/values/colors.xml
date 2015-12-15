@@ -18,6 +18,8 @@
     <color name="tab_market_title">#fff</color>
     <color name="tab_market_divider_color">#ee5900</color>
     <color name="tab_market_divider_color_active">#fff</color>
+    <color name="tab_market_price_increase_color">#009688</color>
+    <color name="tab_market_price_decrease_color">#ee5900</color>
 
     <!-- Tab in FragmentWorkshop -->
     <color name="tab_workshop_bg_color">#ee5900</color>

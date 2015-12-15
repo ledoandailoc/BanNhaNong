@@ -39,6 +39,6 @@
     <!-- Item price agri -->
 
     <dimen name="item_price_height">40dp</dimen>
-    <dimen name="item_price_image_height">25dp</dimen>
+    <dimen name="item_price_image_height">20dp</dimen>
 
 </resources>

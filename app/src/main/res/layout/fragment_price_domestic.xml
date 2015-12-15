@@ -33,6 +33,14 @@
             android:layout_below="@+id/sv_domestic_price"
             android:layout_alignLeft="@+id/sv_domestic_price"
             android:layout_alignStart="@+id/sv_domestic_price" />
+
+        <Spinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/sn_category"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+           />
     </RelativeLayout>
 
 </RelativeLayout>
