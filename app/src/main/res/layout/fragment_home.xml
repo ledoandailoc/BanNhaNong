@@ -21,12 +21,13 @@
         <include android:id="@+id/tab_fragment_price"
             layout="@layout/tab_fragment_price"></include>
 
-
-        <RelativeLayout
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/vp_agricultural_price"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/price_container"
-            android:layout_below="@+id/tab_fragment_price"></RelativeLayout>
+            android:layout_below="@+id/tab_fragment_price"
+            />
 
     </RelativeLayout>
 </RelativeLayout>

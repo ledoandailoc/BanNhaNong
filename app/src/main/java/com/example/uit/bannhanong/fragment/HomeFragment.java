@@ -3,6 +3,7 @@ package com.example.uit.bannhanong.fragment;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.uit.bannhanong.R;
+import com.example.uit.bannhanong.adapter.AgriculturePricePagerAdapter;
+import com.example.uit.bannhanong.adapter.WorkshopPagerAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
@@ -23,7 +26,11 @@ public class HomeFragment extends BaseMainFragment {
     private RelativeLayout mRlTabDomestic, mRlTabInternational;
     private TextView mTvTabDomestic, mTvTabInternational;
     private LinearLayout mLnTabDomestic, mLnTabInternational;
-    
+
+    AgriculturePricePagerAdapter mPagerAdapter;
+    ViewPager viewPager;
+
+
     public static HomeFragment newInstance() {
         return new HomeFragment();
     }
@@ -41,6 +48,7 @@ public class HomeFragment extends BaseMainFragment {
 
     @Override
     protected void initContentViews(View view) {
+        viewPager = CommonUtils.findViewById(view, R.id.vp_agricultural_price);
         attachTab(view);
     }
 
@@ -51,7 +59,9 @@ public class HomeFragment extends BaseMainFragment {
 
     @Override
     protected void initData() {
-
+        mPagerAdapter = new AgriculturePricePagerAdapter(getChildFragmentManager());
+        viewPager.setAdapter(mPagerAdapter);
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
     }
 
     private void attachTab(View v) {
@@ -65,9 +75,6 @@ public class HomeFragment extends BaseMainFragment {
         mLnTabDomestic = CommonUtils.findViewById(v, R.id.tab_domestic_divider);
         mLnTabInternational = CommonUtils.findViewById(v, R.id.tab_international_divider);
 
-        DomesticPriceFragment domesticPriceFragment = new DomesticPriceFragment().newInstance();
-        showFragmentWithNewContainer(domesticPriceFragment,R.id.price_container);
-
         mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color_active));
 
         mRlTabDomestic.setOnClickListener(new View.OnClickListener() {
@@ -75,8 +82,7 @@ public class HomeFragment extends BaseMainFragment {
             public void onClick(View v) {
                 unSelectAllTab();
                 mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color_active));
-                DomesticPriceFragment domesticPriceFragment = new DomesticPriceFragment().newInstance();
-                showFragmentWithNewContainer(domesticPriceFragment, R.id.price_container);
+                viewPager.setCurrentItem(0);
             }
         });
         mRlTabInternational.setOnClickListener(new View.OnClickListener() {
@@ -84,8 +90,7 @@ public class HomeFragment extends BaseMainFragment {
             public void onClick(View v) {
                 unSelectAllTab();
                 mLnTabInternational.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color_active));
-                InternationalPriceFragment internationalPriceFragment = new InternationalPriceFragment().newInstance();
-                showFragmentWithNewContainer(internationalPriceFragment, R.id.price_container);
+                viewPager.setCurrentItem(1);
             }
         });
 
@@ -95,5 +100,37 @@ public class HomeFragment extends BaseMainFragment {
     private void unSelectAllTab() {
         mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color));
         mLnTabInternational.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color));
+    }
+
+    public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
+        private static final float MIN_SCALE = 0.85f;
+        private static final float MIN_ALPHA = 0.5f;
+
+        @Override
+        public void transformPage(View view, float position) {
+            int pageWidth = view.getWidth();
+            int pageHeight = view.getHeight();
+            if (position < -1) {
+                view.setAlpha(0);
+
+            } else if (position <= 1) { // [-1,1]
+                float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+                float vertMargin = pageHeight * (1 - scaleFactor) / 2;
+                float horzMargin = pageWidth * (1 - scaleFactor) / 2;
+                if (position < 0) {
+                    view.setTranslationX(horzMargin - vertMargin / 2);
+                } else {
+                    view.setTranslationX(-horzMargin + vertMargin / 2);
+                }
+                view.setScaleX(scaleFactor);
+                view.setScaleY(scaleFactor);
+                view.setAlpha(MIN_ALPHA +
+                        (scaleFactor - MIN_SCALE) /
+                                (1 - MIN_SCALE) * (1 - MIN_ALPHA));
+
+            } else {
+                view.setAlpha(0);
+            }
+        }
     }
 }

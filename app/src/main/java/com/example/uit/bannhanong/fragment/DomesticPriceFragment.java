@@ -24,8 +24,12 @@ public class DomesticPriceFragment extends BaseMainFragment {
 
     SearchView searchView;
     private ListView mLvAgricultural;
-    ArrayList<Agricultural> listAgricultual;
-    
+    ArrayList<Agricultural> listAgricultual = new ArrayList<>();
+    String[] name = {"Cà phê","Cao su","Điều","Tiêu", "Lúa"};
+    int[] priceDo = {70000,100000,30000,200000,8000};
+    int[] priceIn = {12,34,53,34,55};
+    String[] unit = {"1kg","1kg","1kg","1kg", "1kg"};
+    String[] status = {"increase","increase","decrease","increase", "decrease"};
     public static DomesticPriceFragment newInstance() {
         return new DomesticPriceFragment();
     }
@@ -55,13 +59,10 @@ public class DomesticPriceFragment extends BaseMainFragment {
     protected void initData() {
 
         // Test
-        String[] name = {"Cà phê","Cao su","Điều","Tiêu", "Lúa"};
-        int[] priceDo = {70000, 100000,30000, 200000, 8000};
-        int[] priceIn = {12, 34,53, 34, 55};
-        String[] unit = {"1kg","1kg","1kg","1kg", "1kg"};
-        String[] status = {"increase","increase","decrease","increase", "decrease"};
 
-        listAgricultual = new ArrayList<>();
+
+
+
         for (int n = 0; n < name.length; n++)
         {
             Agricultural agricultural = new Agricultural();
