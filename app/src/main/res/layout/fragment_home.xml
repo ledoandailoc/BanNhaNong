@@ -8,17 +8,17 @@
     tools:context=".activity.MainActivity"
     android:background="@drawable/bg_rice"
     >
-
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/actionbar_main" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#66000000"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/actionbar">
 
     </RelativeLayout>
-
-
 
 </RelativeLayout>

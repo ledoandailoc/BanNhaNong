@@ -12,4 +12,7 @@
     <!--Actionbar -->
     <color name="actionbar_bg_color">#009688</color>
     <color name="actionbar_title_color">#fff</color>
+
+    <!--Under Background-->
+    <color name="under_bg">#A9A9A9</color>
 </resources>

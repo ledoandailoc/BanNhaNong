@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseFragmentActivity;
 import com.example.uit.bannhanong.fragment.HomeFragment;
+import com.example.uit.bannhanong.fragment.WorkshopFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
 public class MainActivity extends BaseFragmentActivity {
@@ -95,8 +96,8 @@ public class MainActivity extends BaseFragmentActivity {
                 mIvTabWorkshop.setImageResource(R.drawable.icon_tab_workshop_active);
                 mTvTabWorkshop.setTextColor(getResources().getColor(R.color.tab_text_active_color));
                 mTvTabWorkshop.setTypeface(null, Typeface.BOLD);
-                HomeFragment homeFragment = HomeFragment.newInstance();
-                showFragmentWithClearStackMode(homeFragment);
+                WorkshopFragment workshopFragment = WorkshopFragment.newInstance();
+                showFragmentWithClearStackMode(workshopFragment);
             }
         });
         mRlTabMap.setOnClickListener(new View.OnClickListener() {

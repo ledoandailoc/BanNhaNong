@@ -19,6 +19,7 @@
 
     <!-- Tabbar -->
     <dimen name="tab_height">55dp</dimen>
+    <dimen name="tab_mini_height">18dp</dimen>
     <dimen name="icon_height_tab">30dp</dimen>
     <dimen name="label_text_size_tab">11sp</dimen>
 

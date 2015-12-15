@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.MainActivity"
+    android:background="@drawable/bg_rice"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:background="@color/actionbar_bg_color">
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/actionbar_title_size"
+            android:textColor="@color/actionbar_title_color"
+            android:text="Kĩ sư"/>
+
+        <ImageView
+            android:layout_width="@dimen/actionbar_ic_setting_size"
+            android:layout_height="@dimen/actionbar_ic_setting_size"
+            android:layout_marginRight="@dimen/common_distance_lv_1"
+            android:src="@drawable/icon_setting"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <ImageView
+            android:layout_width="@dimen/actionbar_ic_setting_size"
+            android:layout_height="@dimen/actionbar_ic_setting_size"
+            android:layout_marginLeft="@dimen/common_distance_lv_1"
+            android:src="@drawable/icon_setting"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/iv_show_seminar_fragment"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
