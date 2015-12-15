@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.uit.bannhanong.fragment.EngineerFragment;
 import com.example.uit.bannhanong.fragment.HomeFragment;
+import com.example.uit.bannhanong.fragment.NewsFragment;
 import com.example.uit.bannhanong.fragment.SeminarFragment;
 
 public class WorkshopPagerAdapter extends FragmentStatePagerAdapter {
@@ -21,12 +22,13 @@ public class WorkshopPagerAdapter extends FragmentStatePagerAdapter {
         switch(pos) {
             case 0: return SeminarFragment.newInstance();
             case 1: return EngineerFragment.newInstance();
+            case 2: return NewsFragment.newInstance();
             default: return SeminarFragment.newInstance();
         }
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 }

@@ -8,13 +8,11 @@ import android.widget.ImageView;
 
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseMainFragment;
-import com.example.uit.bannhanong.listener.WorkshopListener;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
 public class SeminarFragment extends BaseMainFragment {
 
     ImageView mIvShowEngineerFragment;
-    WorkshopListener workshopListener;
 
     public static SeminarFragment newInstance() {
         return new SeminarFragment();
@@ -31,18 +29,10 @@ public class SeminarFragment extends BaseMainFragment {
 
     @Override
     protected void initContentViews(View view) {
-        mIvShowEngineerFragment = (ImageView)CommonUtils.findViewById(view, R.id.iv_show_engineer_fragment);
-        workshopListener = new WorkshopFragment();
     }
 
     @Override
     protected void initListener(View view) {
-        mIvShowEngineerFragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                workshopListener.showEngineerFragment();
-            }
-        });
     }
 
     @Override

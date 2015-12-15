@@ -5,17 +5,25 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.adapter.WorkshopPagerAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
-import com.example.uit.bannhanong.listener.WorkshopListener;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
-public class WorkshopFragment extends BaseMainFragment implements WorkshopListener{
+public class WorkshopFragment extends BaseMainFragment {
 
-    ViewPager pager;
+    ViewPager viewPager;
     WorkshopPagerAdapter mPagerAdapter;
+
+    private RelativeLayout mRlTabSeminar, mRlTabEngineer, mRlTabNews;
+    private TextView mTvTabSeminar, mTvTabEngineer, mTvTabNews;
+    private LinearLayout mLnTabSeminar, mLnTabEngineer, mLnTabNews;
+
     public static WorkshopFragment newInstance() {
         return new WorkshopFragment();
     }
@@ -31,34 +39,90 @@ public class WorkshopFragment extends BaseMainFragment implements WorkshopListen
 
     @Override
     protected void initContentViews(View view) {
-        pager = (ViewPager) CommonUtils.findViewById(view, R.id.viewPager);
+        viewPager = CommonUtils.findViewById(view, R.id.vp_workshop);
     }
 
     @Override
     protected void initListener(View view) {
+        attachTab(view);
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                selectTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
     protected void initData() {
-
         mPagerAdapter = new WorkshopPagerAdapter(getChildFragmentManager());
-        pager.setAdapter(mPagerAdapter);
-        pager.setPageTransformer(true, new ZoomOutPageTransformer());
+        viewPager.setAdapter(mPagerAdapter);
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
     }
 
-    @Override
-    public void showEngineerFragment() {
+    private void attachTab (View v){
+        mRlTabSeminar = CommonUtils.findViewById(v, R.id.rl_tab_seminar);
+        mRlTabEngineer = CommonUtils.findViewById(v, R.id.rl_tab_engineer);
+        mRlTabNews = CommonUtils.findViewById(v, R.id.rl_tab_news);
+
+        mTvTabSeminar = CommonUtils.findViewById(v, R.id.tv_tab_seminar);
+        mTvTabEngineer = CommonUtils.findViewById(v, R.id.tv_tab_engineer);
+        mTvTabNews = CommonUtils.findViewById(v, R.id.tv_tab_news);
+
+        mLnTabSeminar = CommonUtils.findViewById(v, R.id.tab_seminar_divider);
+        mLnTabEngineer = CommonUtils.findViewById(v, R.id.tab_engineer_divider);
+        mLnTabNews = CommonUtils.findViewById(v, R.id.tab_news_divider);
+
+        mRlTabSeminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectTab(0);
+                viewPager.setCurrentItem(0);
+            }
+        });
+
+        mRlTabEngineer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectTab(1);
+                viewPager.setCurrentItem(1);
+            }
+        });
+
+        mRlTabNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectTab(2);
+                viewPager.setCurrentItem(2);
+            }
+        });
+
     }
 
-    @Override
-    public void showSeminarFragment() {
-
+    private void unSelectAllTab() {
+        mLnTabSeminar.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color));
+        mLnTabEngineer.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color));
+        mLnTabNews.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color));
     }
 
-    @Override
-    public void showSearchEngineer() {
-
+    private void selectTab(int position){
+        unSelectAllTab();
+        if(position == 1){
+            mLnTabEngineer.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+        } else
+        if(position == 2){
+            mLnTabNews.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+        } else mLnTabSeminar.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
     }
 
     public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
@@ -69,13 +133,10 @@ public class WorkshopFragment extends BaseMainFragment implements WorkshopListen
         public void transformPage(View view, float position) {
             int pageWidth = view.getWidth();
             int pageHeight = view.getHeight();
-
-            if (position < -1) { // [-Infinity,-1)
-                // This page is way off-screen to the left.
+            if (position < -1) {
                 view.setAlpha(0);
 
             } else if (position <= 1) { // [-1,1]
-                // Modify the default slide transition to shrink the page as well
                 float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
                 float vertMargin = pageHeight * (1 - scaleFactor) / 2;
                 float horzMargin = pageWidth * (1 - scaleFactor) / 2;
@@ -84,18 +145,13 @@ public class WorkshopFragment extends BaseMainFragment implements WorkshopListen
                 } else {
                     view.setTranslationX(-horzMargin + vertMargin / 2);
                 }
-
-                // Scale the page down (between MIN_SCALE and 1)
                 view.setScaleX(scaleFactor);
                 view.setScaleY(scaleFactor);
-
-                // Fade the page relative to its size.
                 view.setAlpha(MIN_ALPHA +
                         (scaleFactor - MIN_SCALE) /
                                 (1 - MIN_SCALE) * (1 - MIN_ALPHA));
 
-            } else { // (1,+Infinity]
-                // This page is way off-screen to the right.
+            } else {
                 view.setAlpha(0);
             }
         }

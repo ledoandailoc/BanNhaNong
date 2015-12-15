@@ -8,18 +8,17 @@ import android.widget.ImageView;
 
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseMainFragment;
-import com.example.uit.bannhanong.utils.CommonUtils;
 
-public class EngineerFragment extends BaseMainFragment {
+public class NewsFragment extends BaseMainFragment {
 
-    ImageView mIvShowSeminarFragment;
+    ImageView mIvShowEngineerFragment;
 
-    public static EngineerFragment newInstance() {
-        return new EngineerFragment();
+    public static NewsFragment newInstance() {
+        return new NewsFragment();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_engineer, container, false);
+        return inflater.inflate(R.layout.fragment_news, container, false);
     }
 
     @Override
