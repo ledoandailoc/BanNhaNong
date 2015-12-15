@@ -36,4 +36,9 @@
     <!--Menu Midle size-->
     <dimen name="menu_icon_menu_size">55dp</dimen>
 
+    <!-- Item price agri -->
+
+    <dimen name="item_price_height">40dp</dimen>
+    <dimen name="item_price_image_height">25dp</dimen>
+
 </resources>

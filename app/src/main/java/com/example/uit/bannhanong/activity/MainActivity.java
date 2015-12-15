@@ -3,6 +3,7 @@ package com.example.uit.bannhanong.activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -86,8 +87,8 @@ public class MainActivity extends BaseFragmentActivity implements
                 mIvTabMarket.setImageResource(R.drawable.icon_tab_market_active);
                 mTvTabMarket.setTextColor(getResources().getColor(R.color.tab_text_active_color));
                 mTvTabMarket.setTypeface(null, Typeface.BOLD);
-                HomeFragment homeFragment = HomeFragment.newInstance();
-                showFragmentWithClearStackMode(homeFragment);
+                WorkshopFragment workshopFragment = WorkshopFragment.newInstance();
+                showFragmentWithClearStackMode(workshopFragment);
             }
         });
         mRlTabWorkshop.setOnClickListener(new View.OnClickListener() {
@@ -108,8 +109,8 @@ public class MainActivity extends BaseFragmentActivity implements
                 mIvTabMap.setImageResource(R.drawable.icon_tab_map_active);
                 mTvTabMap.setTextColor(getResources().getColor(R.color.tab_text_active_color));
                 mTvTabMap.setTypeface(null, Typeface.BOLD);
-                HomeFragment homeFragment = HomeFragment.newInstance();
-                showFragmentWithClearStackMode(homeFragment);
+                WorkshopFragment workshopFragment = WorkshopFragment.newInstance();
+                showFragmentWithClearStackMode(workshopFragment);
             }
         });
 
@@ -155,10 +156,10 @@ public class MainActivity extends BaseFragmentActivity implements
 
     @Override
     public void onBottomMenuHidden() {
-//        ViewCompat.animate(this.mBottomMenuView).translationY(mBottomMenuView.getHeight()).
-//                setInterpolator(AnimationUtils.DECELERATE_CUBIC_INTERPOLATOR)
-//                .setDuration(400L).setStartDelay(100).start();
-//        mIsViewBottomMenu = !mIsViewBottomMenu;
+      /*  ViewCompat.animate(this.mBottomMenuView).translationY(mBottomMenuView.getHeight()).
+                setInterpolator(AnimationUtils.DECELERATE_CUBIC_INTERPOLATOR)
+                .setDuration(400L).setStartDelay(100).start();*/
+        mIsViewBottomMenu = !mIsViewBottomMenu;
         this.mBottomMenuView.setVisibility(View.GONE);
         mIsViewBottomMenu = !mIsViewBottomMenu;
     }
