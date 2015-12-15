@@ -60,9 +60,6 @@ public class DomesticPriceFragment extends BaseMainFragment {
 
         // Test
 
-
-
-
         for (int n = 0; n < name.length; n++)
         {
             Agricultural agricultural = new Agricultural();

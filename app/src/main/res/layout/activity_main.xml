@@ -181,5 +181,7 @@
         android:background="#fff"
         android:orientation="vertical">
 
+        <include layout="@layout/profile_view"/>
+
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
