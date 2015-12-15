@@ -66,11 +66,11 @@ public class DomesticPriceFragment extends BaseMainFragment {
         for (int n = 0; n < name.length; n++)
         {
             Agricultural agricultural = new Agricultural();
-            agricultural.name = name[n];
-            agricultural.priceDomestic = priceDo[n];
-            agricultural.priceInternational = priceIn[n];
-            agricultural.unit = unit[n];
-            agricultural.status = status[n];
+            agricultural.setName(name[n]);
+            agricultural.setPriceDomestic(priceDo[n]);
+            agricultural.setPriceInternational(priceIn[n]);
+            agricultural.setUnit(unit[n]);
+            agricultural.setStatus(status[n]);
 
             listAgricultual.add(agricultural);
         }

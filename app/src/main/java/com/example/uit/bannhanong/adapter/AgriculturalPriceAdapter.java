@@ -41,13 +41,13 @@ public class AgriculturalPriceAdapter extends ArrayAdapter<Agricultural> {
 
 		initView(view);
 
-		mTvName.setText(agricultural.name);
-		mTvPrice.setText(String.valueOf(agricultural.priceDomestic) + "/" + agricultural.unit);
-		if (agricultural.status.equals("increase"))
+		mTvName.setText(agricultural.getName());
+		mTvPrice.setText(String.valueOf(agricultural.getPriceDomestic()) + "/" + agricultural.getUnit());
+		if (agricultural.getStatus().equals("increase"))
 		{
 			mIvStatus.setImageResource(R.drawable.ic_increase);
 		}
-		else if (agricultural.status.equals("decrease"))
+		else if (agricultural.getStatus().equals("decrease"))
 		{
 			mIvStatus.setImageResource(R.drawable.ic_decrease);
 		}
