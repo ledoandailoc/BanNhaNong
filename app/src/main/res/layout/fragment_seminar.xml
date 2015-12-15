@@ -6,6 +6,5 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".activity.MainActivity"
-    android:background="@drawable/bg_rice"
     >
 </RelativeLayout>
