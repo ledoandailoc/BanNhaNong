@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_market_height"
+        android:background="@color/tab_market_bg_color"
+        >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/rl_tab_domestic">
+
+            <TextView
+                android:id="@+id/tv_tab_market_domestic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_market_domestic_name"
+                android:textColor="@color/tab_market_title"
+                android:textSize="@dimen/common_text_size_lv_1"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+            <LinearLayout
+                android:id="@+id/tab_domestic_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_divider"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+            </LinearLayout>
+
+        </RelativeLayout>
+
+<!--        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#fff"></LinearLayout>-->
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/rl_tab_international">
+
+            <TextView
+                android:id="@+id/tv_tab_market_international"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_market_international_name"
+                android:textColor="@color/tab_market_title"
+                android:textSize="@dimen/common_text_size_lv_1"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+            <LinearLayout
+                android:id="@+id/tab_international_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_divider"
+                android:layout_alignParentBottom="true"
+                >
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>

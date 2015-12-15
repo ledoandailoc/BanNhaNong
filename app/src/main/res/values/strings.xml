@@ -7,4 +7,9 @@
     <string name="tab_market_name">Market</string>
     <string name="tab_workshop_name">Workshop</string>
     <string name="tab_map_name">Location</string>
+
+    <!-- Tab in Market-->
+    <string name="tab_market_domestic_name">Giá trong nước</string>
+    <string name="tab_market_international_name">Giá quốc tế</string>
+
 </resources>
