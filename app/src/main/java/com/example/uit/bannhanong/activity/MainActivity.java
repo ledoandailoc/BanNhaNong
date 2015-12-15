@@ -19,12 +19,17 @@ import com.example.uit.bannhanong.base.BaseFragmentActivity;
 import com.example.uit.bannhanong.fragment.HomeFragment;
 import com.example.uit.bannhanong.fragment.WorkshopFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
+import com.example.uit.bannhanong.view.BottomMenuView;
 
-public class MainActivity extends BaseFragmentActivity {
+public class MainActivity extends BaseFragmentActivity implements
+        View.OnClickListener, BottomMenuView.BottomMenuListener{
 
     private RelativeLayout mRlTabPrice, mRlTabMarket, mRlTabWorkshop, mRlTabMap;
     private ImageView mIvTabPrice, mIvTabMarket, mIvTabWorkshop, mIvTabMap;
     private TextView mTvTabPrice, mTvTabMarket, mTvTabWorkshop, mTvTabMap;
+    private BottomMenuView mBottomMenuView;
+    private View mMenuBtn;
+    private boolean mIsViewBottomMenu = false;
 
     @Override
     protected Fragment onCreateMainFragment(Bundle savedInstanceState) {
@@ -45,6 +50,8 @@ public class MainActivity extends BaseFragmentActivity {
     }
 
     private void attachTab() {
+        mBottomMenuView = CommonUtils.findViewById(this, R.id.main_bottom_menu_view);
+        mMenuBtn = CommonUtils.findViewById(this, R.id.main_menu_btn);
 
         mRlTabPrice = CommonUtils.findViewById(this, R.id.main_home_tab);
         mRlTabMarket = CommonUtils.findViewById(this, R.id.main_activity_tab);
@@ -111,6 +118,10 @@ public class MainActivity extends BaseFragmentActivity {
                 showFragmentWithClearStackMode(homeFragment);
             }
         });
+
+        mMenuBtn.setOnClickListener(this);
+        mBottomMenuView.setBottomMenuListener(this);
+
     }
 
 
@@ -127,6 +138,35 @@ public class MainActivity extends BaseFragmentActivity {
         mIvTabMap.setImageResource(R.drawable.icon_tab_map);
         mTvTabMap.setTextColor(getResources().getColor(R.color.tab_text_color));
         mTvTabMap.setTypeface(null, Typeface.NORMAL);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.main_menu_btn:
+                if (!mIsViewBottomMenu) {
+//                    ViewCompat.animate(this.mBottomMenuView).translationY(0.0F).
+//                            setInterpolator(AnimationUtils.DECELERATE_CUBIC_INTERPOLATOR)
+//                            .setDuration(400L).setStartDelay(100).start();
+                    this.mBottomMenuView.setVisibility(View.VISIBLE);
+                } else {
+
+                }
+                mIsViewBottomMenu = !mIsViewBottomMenu;
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onBottomMenuHidden() {
+//        ViewCompat.animate(this.mBottomMenuView).translationY(mBottomMenuView.getHeight()).
+//                setInterpolator(AnimationUtils.DECELERATE_CUBIC_INTERPOLATOR)
+//                .setDuration(400L).setStartDelay(100).start();
+//        mIsViewBottomMenu = !mIsViewBottomMenu;
+        this.mBottomMenuView.setVisibility(View.GONE);
+        mIsViewBottomMenu = !mIsViewBottomMenu;
     }
 
 }

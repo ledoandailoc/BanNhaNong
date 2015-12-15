@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!-- Common -->
+    <color name="transparent_bg_color">#55000000</color>
+    <color name="transparent_dark_bg_color">#80000000</color>
+
     <!-- Tab -->
     <color name="tab_bg_color">#fff</color>
     <color name="tab_text_color">#9E9E9E</color>
