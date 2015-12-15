@@ -5,14 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 
+import com.example.uit.bannhanong.DTO.Engineer;
 import com.example.uit.bannhanong.R;
+import com.example.uit.bannhanong.adapter.EngineerAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EngineerFragment extends BaseMainFragment {
 
-    ImageView mIvShowSeminarFragment;
+    private ListView mLvEngineer;
+    List<Engineer> listEngineer;
+
 
     public static EngineerFragment newInstance() {
         return new EngineerFragment();
@@ -29,6 +37,7 @@ public class EngineerFragment extends BaseMainFragment {
 
     @Override
     protected void initContentViews(View view) {
+        mLvEngineer = CommonUtils.findViewById(view, R.id.lv_engineer);
     }
 
     @Override
@@ -37,6 +46,20 @@ public class EngineerFragment extends BaseMainFragment {
 
     @Override
     protected void initData() {
+        listEngineer = new ArrayList<Engineer>();
+        Engineer engineer = new Engineer();
+        listEngineer.add(engineer);
+        listEngineer.add(engineer);
+        listEngineer.add(engineer);
+        listEngineer.add(engineer);
+        listEngineer.add(engineer);
+        listEngineer.add(engineer);
+        listEngineer.add(engineer);
+        listEngineer.add(engineer);
+        listEngineer.add(engineer);
 
+
+        EngineerAdapter engineerAdapter = new EngineerAdapter(getActivity(), R.layout.item_engineer, listEngineer);
+        mLvEngineer.setAdapter(engineerAdapter);
     }
 }

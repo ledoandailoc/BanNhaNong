@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.adapter.WorkshopPagerAdapter;
