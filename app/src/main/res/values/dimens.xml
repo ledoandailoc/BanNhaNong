@@ -32,4 +32,8 @@
     <dimen name="actionbar_height">50dp</dimen>
     <dimen name="actionbar_title_size">25dp</dimen>
     <dimen name="actionbar_ic_setting_size">28dp</dimen>
+
+    <!--Menu Midle size-->
+    <dimen name="menu_icon_menu_size">55dp</dimen>
+
 </resources>

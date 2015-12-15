@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_dark_bg_color">
+
+    <RelativeLayout
+        android:id="@+id/rl_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/main_menu_btn"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/common_distance_lv_1"
+            android:src="@drawable/icon_menu_out" />
+
+        <ImageView
+            android:id="@+id/menu_lost_mode_iv"
+            android:layout_width="@dimen/menu_icon_menu_size"
+            android:layout_height="@dimen/menu_icon_menu_size"
+            android:layout_above="@+id/main_menu_btn"
+            android:layout_alignLeft="@+id/menu_virtual_leash_iv"
+            android:layout_alignStart="@+id/menu_virtual_leash_iv"
+            android:layout_marginBottom="25dp"
+            android:src="@drawable/icon_menu_lost_mode_active" />
+
+        <ImageView
+            android:id="@+id/menu_virtual_leash_iv"
+            android:layout_width="@dimen/menu_icon_menu_size"
+            android:layout_height="@dimen/menu_icon_menu_size"
+            android:layout_above="@+id/menu_lost_mode_iv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:src="@drawable/icon_menu_virtual_leash_active" />
+
+        <ImageView
+            android:id="@+id/menu_virtual_fence_iv"
+            android:layout_width="@dimen/menu_icon_menu_size"
+            android:layout_height="@dimen/menu_icon_menu_size"
+            android:layout_above="@+id/menu_virtual_leash_iv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:src="@drawable/icon_menu_virtual_fence_active" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/menu_virtual_fence_iv"
+            android:layout_alignTop="@+id/menu_virtual_fence_iv"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/main_menu_btn"
+            android:layout_toRightOf="@+id/main_menu_btn"
+            android:gravity="center"
+            android:text="Menu1"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/menu_virtual_leash_iv"
+            android:layout_alignTop="@+id/menu_virtual_leash_iv"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/main_menu_btn"
+            android:layout_toRightOf="@+id/main_menu_btn"
+            android:gravity="center"
+            android:text="Menu2"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/menu_lost_mode_iv"
+            android:layout_alignTop="@+id/menu_lost_mode_iv"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/main_menu_btn"
+            android:layout_toRightOf="@+id/main_menu_btn"
+            android:gravity="center"
+            android:text="Menu3"
+            android:textColor="#fff" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

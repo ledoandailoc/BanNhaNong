@@ -165,7 +165,7 @@
             android:background="@color/main_bottom_menu_bg_color"
             android:visibility="gone" />-->
 
-        <RelativeLayout
+        <com.example.uit.bannhanong.view.BottomMenuView
             android:id="@+id/main_bottom_menu_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
