@@ -67,6 +67,9 @@ public class WorkshopFragment extends BaseMainFragment {
         mPagerAdapter = new WorkshopPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(mPagerAdapter);
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+
+        selectTab(1);
+        viewPager.setCurrentItem(1);
     }
 
     private void attachTab (View v){
