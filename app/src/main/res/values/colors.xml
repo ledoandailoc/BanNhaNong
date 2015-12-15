@@ -15,6 +15,16 @@
     <color name="tab_market_divider_color">#ee5900</color>
     <color name="tab_market_divider_color_active">#fff</color>
 
+    <!-- Tab in FragmentWorkshop -->
+    <color name="tab_workshop_bg_color">#ee5900</color>
+    <color name="tab_workshop_title">#fff</color>
+    <color name="tab_workshop_divider_color">#ee5900</color>
+    <color name="tab_workshop_divider_color_active">#fff</color>
+
+    <!--App color-->
+    <color name="app_orange">#ee5900</color>
+    <color name="app_green">#009688</color>
+
     <!--Actionbar -->
     <color name="actionbar_bg_color">#009688</color>
     <color name="actionbar_title_color">#fff</color>

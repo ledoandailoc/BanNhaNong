@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_market_height"
+        android:background="@color/tab_workshop_bg_color"
+        >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/rl_tab_seminar">
+
+            <TextView
+                android:id="@+id/tv_tab_seminar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_seminar"
+                android:textColor="@color/tab_workshop_title"
+                android:textSize="@dimen/common_text_size_lv_1"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+            <LinearLayout
+                android:id="@+id/tab_seminar_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_divider"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="#fff">
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/rl_tab_engineer">
+
+            <TextView
+                android:id="@+id/tv_tab_engineer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_engineer"
+                android:textColor="@color/tab_workshop_title"
+                android:textSize="@dimen/common_text_size_lv_1"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+            <LinearLayout
+                android:id="@+id/tab_engineer_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_divider"
+                android:layout_alignParentBottom="true"
+                >
+            </LinearLayout>
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/rl_tab_news">
+
+        <TextView
+            android:id="@+id/tv_tab_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_news"
+            android:textColor="@color/tab_bg_color"
+            android:textSize="@dimen/common_text_size_lv_1"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:id="@+id/tab_news_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_divider"
+            android:layout_alignParentBottom="true"
+            >
+        </LinearLayout>
+    </RelativeLayout>
+    </LinearLayout>

@@ -17,5 +17,4 @@
             android:textColor="@color/actionbar_title_color"
             android:text="Hội thảo"/>
     </RelativeLayout>
-
 </RelativeLayout>

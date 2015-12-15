@@ -12,4 +12,8 @@
     <string name="tab_market_domestic_name">Giá trong nước</string>
     <string name="tab_market_international_name">Giá quốc tế</string>
 
+    <!--Tab in workshop-->
+    <string name="tab_seminar">Hội thảo</string>
+    <string name="tab_engineer">Kĩ sư</string>
+    <string name="tab_news">Tin tức</string>
 </resources>
