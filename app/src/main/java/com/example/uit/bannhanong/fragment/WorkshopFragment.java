@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.adapter.WorkshopPagerAdapter;
@@ -38,17 +39,32 @@ public class WorkshopFragment extends BaseMainFragment {
 
     @Override
     protected void initContentViews(View view) {
-        viewPager = (ViewPager) CommonUtils.findViewById(view, R.id.vp_workshop);
+        viewPager = CommonUtils.findViewById(view, R.id.vp_workshop);
     }
 
     @Override
     protected void initListener(View view) {
         attachTab(view);
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                selectTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
     protected void initData() {
-
         mPagerAdapter = new WorkshopPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(mPagerAdapter);
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
@@ -70,8 +86,7 @@ public class WorkshopFragment extends BaseMainFragment {
         mRlTabSeminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                unSelectAllTab();
-                mLnTabSeminar.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+                selectTab(0);
                 viewPager.setCurrentItem(0);
             }
         });
@@ -79,8 +94,7 @@ public class WorkshopFragment extends BaseMainFragment {
         mRlTabEngineer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                unSelectAllTab();
-                mLnTabEngineer.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+                selectTab(1);
                 viewPager.setCurrentItem(1);
             }
         });
@@ -88,8 +102,7 @@ public class WorkshopFragment extends BaseMainFragment {
         mRlTabNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                unSelectAllTab();
-                mLnTabNews.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+                selectTab(2);
                 viewPager.setCurrentItem(2);
             }
         });
@@ -102,6 +115,16 @@ public class WorkshopFragment extends BaseMainFragment {
         mLnTabNews.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color));
     }
 
+    private void selectTab(int position){
+        unSelectAllTab();
+        if(position == 1){
+            mLnTabEngineer.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+        } else
+        if(position == 2){
+            mLnTabNews.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+        } else mLnTabSeminar.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+    }
+
     public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.85f;
         private static final float MIN_ALPHA = 0.5f;
@@ -110,7 +133,6 @@ public class WorkshopFragment extends BaseMainFragment {
         public void transformPage(View view, float position) {
             int pageWidth = view.getWidth();
             int pageHeight = view.getHeight();
-
             if (position < -1) {
                 view.setAlpha(0);
 
