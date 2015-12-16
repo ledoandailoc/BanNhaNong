@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.example.uit.bannhanong.utils.TypeFaceManagerUtils;
 
-public class BNNApplication extends Application {
+public class MainApplication extends Application {
 
     private static Context mContext;
 

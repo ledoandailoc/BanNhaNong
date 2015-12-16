@@ -4,6 +4,10 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="size_small">4dp</dimen>
+    <dimen name="size_normal">8dp</dimen>
+    <dimen name="size_large">16dp</dimen>
+
     <!-- Common -->
     <dimen name="common_text_size_lv_1">15dp</dimen>
     <dimen name="common_text_size_lv_2">20dp</dimen>

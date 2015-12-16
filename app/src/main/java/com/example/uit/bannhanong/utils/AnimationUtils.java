@@ -13,7 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 
-import com.example.uit.bannhanong.BNNApplication;
+import com.example.uit.bannhanong.MainApplication;
 
 public class AnimationUtils {
 
@@ -33,7 +33,7 @@ public class AnimationUtils {
         FAST_OUT_LINEAR_IN_INTERPOLATOR = new FastOutLinearInInterpolator();
         LINEAR_OUT_SLOW_IN_INTERPOLATOR = new LinearOutSlowInInterpolator();
         DECELERATE_CUBIC_INTERPOLATOR = android.view.animation.AnimationUtils
-                .loadInterpolator(BNNApplication.getContext(), android.R.interpolator.decelerate_cubic);
+                .loadInterpolator(MainApplication.getContext(), android.R.interpolator.decelerate_cubic);
         PAGER_INTERPOLATOR = new Interpolator() {
             public float getInterpolation(float t) {
                 t -= 1.0f;
