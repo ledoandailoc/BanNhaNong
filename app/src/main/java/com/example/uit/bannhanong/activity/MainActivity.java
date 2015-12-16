@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseFragmentActivity;
 import com.example.uit.bannhanong.fragment.HomeFragment;
+import com.example.uit.bannhanong.fragment.LocationFragment;
 import com.example.uit.bannhanong.fragment.WorkshopFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
 import com.example.uit.bannhanong.view.BottomMenuView;
@@ -109,8 +110,8 @@ public class MainActivity extends BaseFragmentActivity implements
                 mIvTabMap.setImageResource(R.drawable.icon_tab_map_active);
                 mTvTabMap.setTextColor(getResources().getColor(R.color.tab_text_active_color));
                 mTvTabMap.setTypeface(null, Typeface.BOLD);
-                WorkshopFragment workshopFragment = WorkshopFragment.newInstance();
-                showFragmentWithClearStackMode(workshopFragment);
+                LocationFragment locationFragment = LocationFragment.newInstance();
+                showFragmentWithClearStackMode(locationFragment);
             }
         });
 

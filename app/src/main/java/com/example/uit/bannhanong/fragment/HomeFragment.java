@@ -93,6 +93,8 @@ public class HomeFragment extends BaseMainFragment {
         mLnTabInternational = CommonUtils.findViewById(v, R.id.tab_international_divider);
 
         mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color_active));
+        mTvTabDomestic.setTextColor(getResources().getColor(R.color.tab_market_title_text_color_active));
+
 
         mRlTabDomestic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,15 +117,19 @@ public class HomeFragment extends BaseMainFragment {
     private void unSelectAllTab() {
         mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color));
         mLnTabInternational.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color));
+        mTvTabDomestic.setTextColor(getResources().getColor(R.color.tab_market_title_text_color));
+        mTvTabInternational.setTextColor(getResources().getColor(R.color.tab_market_title_text_color));
     }
 
     private void selectTab(int position){
         unSelectAllTab();
         if(position == 0){
-            mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+            mLnTabDomestic.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color_active));
+            mTvTabDomestic.setTextColor(getResources().getColor(R.color.tab_market_title_text_color_active));
         }
         else if(position == 1){
-            mLnTabInternational.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
+            mLnTabInternational.setBackgroundColor(getResources().getColor(R.color.tab_market_divider_color_active));
+            mTvTabInternational.setTextColor(getResources().getColor(R.color.tab_market_title_text_color_active));
         }
     }
 

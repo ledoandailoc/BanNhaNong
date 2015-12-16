@@ -4,12 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import com.example.uit.bannhanong.DTO.Agricultural;
 import com.example.uit.bannhanong.R;
@@ -18,7 +14,6 @@ import com.example.uit.bannhanong.base.BaseMainFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DomesticPriceFragment extends BaseMainFragment {
 

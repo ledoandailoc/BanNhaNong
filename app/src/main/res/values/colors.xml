@@ -14,9 +14,10 @@
     <color name="tab_text_active_color">#000000</color>
 
     <!-- Tab in FragmentMarket -->
-    <color name="tab_market_bg_color">#ee5900</color>
-    <color name="tab_market_title">#fff</color>
-    <color name="tab_market_divider_color">#ee5900</color>
+    <color name="tab_market_bg_color">#242d36</color>
+    <color name="tab_market_title_text_color">#afafaf</color>
+    <color name="tab_market_title_text_color_active">#fff</color>
+    <color name="tab_market_divider_color">#242d36</color>
     <color name="tab_market_divider_color_active">#fff</color>
     <color name="tab_market_price_increase_color">#009688</color>
     <color name="tab_market_price_decrease_color">#ee5900</color>
