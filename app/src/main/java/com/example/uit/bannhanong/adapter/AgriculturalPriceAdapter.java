@@ -43,13 +43,16 @@ public class AgriculturalPriceAdapter extends ArrayAdapter<Agricultural> {
 
 		mTvName.setText(agricultural.getName());
 		mTvPrice.setText(String.valueOf(agricultural.getPriceDomestic()) + "/" + agricultural.getUnit());
-		if (agricultural.getStatus().equals("increase"))
-		{
+		if (agricultural.getStatus().equals("increase")) {
 			mIvStatus.setImageResource(R.drawable.ic_increase);
+			mTvPrice.setTextColor(getContext().getResources().getColor(R.color.tab_market_price_increase_color));
 		}
-		else if (agricultural.getStatus().equals("decrease"))
-		{
+		else if (agricultural.getStatus().equals("decrease")) {
 			mIvStatus.setImageResource(R.drawable.ic_decrease);
+			mTvPrice.setTextColor(context.getResources().getColor(R.color.md_red_400));
+		}
+		else {
+			mIvStatus.setVisibility(View.INVISIBLE);
 		}
 
 		return view;

@@ -25,11 +25,7 @@ public class DomesticPriceFragment extends BaseMainFragment {
     SearchView searchView;
     private ListView mLvAgricultural;
     ArrayList<Agricultural> listAgricultual = new ArrayList<>();
-    String[] name = {"Cà phê","Cao su","Điều","Tiêu", "Lúa"};
-    int[] priceDo = {70000,100000,30000,200000,8000};
-    int[] priceIn = {12,34,53,34,55};
-    String[] unit = {"1kg","1kg","1kg","1kg", "1kg"};
-    String[] status = {"increase","increase","decrease","increase", "decrease"};
+
     public static DomesticPriceFragment newInstance() {
         return new DomesticPriceFragment();
     }
@@ -59,7 +55,11 @@ public class DomesticPriceFragment extends BaseMainFragment {
     protected void initData() {
 
         // Test
-
+        String[] name = {"Cà phê","Cao su","Điều","Tiêu", "Lúa", "Chanh", "Mía", "Cam", "Quýt", "Bưởi"};
+        int[] priceDo = {70000,100000,30000,200000,8000,10000,6000,190000,12000,20000};
+        int[] priceIn = {12,34,53,34,55,64,33,26,27,64,23};
+        String[] unit = {"1kg","1kg","1kg","1kg", "1kg", "1kg", "1kg", "1kg", "1kg", "1kg"};
+        String[] status = {"","increase","decrease","", "decrease", "decrease", "", "", "increase", "decrease"};
         for (int n = 0; n < name.length; n++)
         {
             Agricultural agricultural = new Agricultural();
@@ -76,6 +76,7 @@ public class DomesticPriceFragment extends BaseMainFragment {
 
         AgriculturalPriceAdapter adapter = new AgriculturalPriceAdapter(getContext(), R.layout.item_price_agricultural, listAgricultual);
         mLvAgricultural.setAdapter(adapter);
+        mLvAgricultural.addHeaderView(View.inflate(getContext(), R.layout.header_price_agricultural, null));
     }
 
 
