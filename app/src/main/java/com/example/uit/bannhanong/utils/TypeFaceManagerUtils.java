@@ -3,7 +3,7 @@ package com.example.uit.bannhanong.utils;
 import android.content.Context;
 import android.graphics.Typeface;
 
-import com.example.uit.bannhanong.BNNApplication;
+import com.example.uit.bannhanong.MainApplication;
 
 public class TypeFaceManagerUtils {
     // Bold italic
@@ -88,7 +88,7 @@ public class TypeFaceManagerUtils {
 
     public static Typeface getFontRegularTypeface() {
         if (sFontRegularTypeFace == null) {
-            sFontRegularTypeFace = Typeface.createFromAsset(BNNApplication.getContext().getAssets()
+            sFontRegularTypeFace = Typeface.createFromAsset(MainApplication.getContext().getAssets()
                     , "fonts/Lato Regular.TTF");
         }
         return sFontRegularTypeFace;

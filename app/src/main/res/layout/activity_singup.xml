@@ -1,0 +1,142 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_grey_50"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/tv_daily"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/edtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/edit_text_border"
+        android:gravity="center"
+        android:hint="Tên đăng nhập"
+        android:inputType="text"
+        android:singleLine="true"
+        android:text="tuan" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/edit_text_border"
+        android:gravity="center"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:text="tuan@gmail.com" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/edit_text_border"
+        android:gravity="center"
+        android:hint="Mật khẩu"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:text="12345" />
+
+    <EditText
+        android:id="@+id/edtPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/edit_text_border"
+        android:gravity="center"
+        android:hint="Chiều cao"
+        android:inputType="phone"
+        android:singleLine="true"
+        android:text="172" />
+
+    <EditText
+        android:id="@+id/edtCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/edit_text_border"
+        android:gravity="center"
+        android:hint="Cân nặng"
+        android:singleLine="true"
+        android:text="65" />
+
+    <RadioGroup
+        android:id="@+id/rgGender"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:checkedButton="@+id/rg_RadioGroup"
+        android:orientation="horizontal"
+        android:layout_marginTop="7dp">
+
+        <RadioButton
+            android:id="@+id/rbNone"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/segmented_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="Không"
+            android:textColor="@drawable/segmented_text_color" />
+
+        <RadioButton
+            android:id="@+id/rbMale"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/segmented_center"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Nam"
+            android:textColor="@drawable/segmented_text_color" />
+
+        <RadioButton
+            android:id="@+id/rbFemale"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/segmented_right"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Nữ"
+            android:textColor="@drawable/segmented_text_color" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/forgot_button_border"
+        android:text="Đăng ký"
+        android:textColor="#ffffff" />
+
+
+    <TextView
+        android:id="@+id/tvSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Đăng nhập tại đây"/>
+
+</LinearLayout>

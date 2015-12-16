@@ -1,6 +1,9 @@
 package com.example.uit.bannhanong.utils;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -41,5 +44,11 @@ public class CommonUtils {
 
     public interface OnMeasuredCallback {
         void onMeasured(View view, int width, int height);
+    }
+
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        return ni != null && cm.getActiveNetworkInfo().isConnected();
     }
 }

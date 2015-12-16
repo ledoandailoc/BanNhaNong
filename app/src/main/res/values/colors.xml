@@ -7,6 +7,7 @@
     <!-- Common -->
     <color name="transparent_bg_color">#55000000</color>
     <color name="transparent_dark_bg_color">#80000000</color>
+    <color name="white">#fff</color>
 
     <!-- Tab -->
     <color name="tab_bg_color">#fff</color>
@@ -28,7 +29,8 @@
     <!-- App color-->
     <color name="app_orange">#ee5900</color>
     <color name="app_green">#009688</color>
-
+    <color name="app_main_color">#009688</color>
+    app_main_color
     <!-- Actionbar -->
     <color name="actionbar_bg_color">#009688</color>
     <color name="actionbar_title_color">#fff</color>
