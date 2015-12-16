@@ -29,9 +29,8 @@
     <string name="tab_seminar">Hội thảo</string>
     <string name="tab_engineer">Kĩ sư</string>
     <string name="tab_news">Tin tức</string>
-<<<<<<< HEAD
     <string name="title_activity_maps">Map</string>
-=======
+
 
     <!-- Login -->
     <string name="edtPassword">Password</string>
@@ -51,7 +50,6 @@
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="title_activity_comment">CommentActivity</string>
     <string name="title_activity_detail_news">DetailNewsActivity</string>
-    <string name="title_activity_maps">Map</string>
     <string name="title_activity_khau_phan_an">KhauPhanAnActivity</string>
     <string name="title_activity_menu_them_ban">MenuThemBanActivity</string>
     <string name="title_activity_maps1">Map</string>
@@ -61,5 +59,4 @@
     <string name="txtemail">Email</string>
     <string name="tvForgot">Will we send you a reset password link to your inbox</string>
     <string name="btnForgot">Forgot</string>
->>>>>>> fcc12b27449605e6e9e773b2fbd277c1c189b9a3
 </resources>

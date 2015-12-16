@@ -41,13 +41,15 @@ public class LoginActivity extends Activity {
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signIn();
+                /*signIn();*/
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
         mTvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this, SignupActivity.class);
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });

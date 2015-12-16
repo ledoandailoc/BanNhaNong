@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.uit.bannhanong">
 
-<<<<<<< HEAD
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -21,7 +21,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-=======
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -39,7 +39,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
->>>>>>> fcc12b27449605e6e9e773b2fbd277c1c189b9a3
+
 
     <application
         android:allowBackup="true"
@@ -62,7 +62,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -78,7 +78,7 @@
         <activity
             android:name=".activity.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
-=======
+
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/app_name"
@@ -99,7 +99,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
->>>>>>> fcc12b27449605e6e9e773b2fbd277c1c189b9a3
     </application>
 
 </manifest>
