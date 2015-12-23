@@ -72,7 +72,8 @@ public class ChatFragment extends BaseMainFragment {
         TextView title  = CommonUtils.findViewById(view,R.id.actionbar_tvTitile);
         title.setText("Tin nhắn");
 
-        receiverId = "56798dec102b80e018d6d7cd";
+        receiverId = getArguments().getString("2");
+
         mBtnSend = CommonUtils.findViewById(view, R.id.mBtnSend);
         mLvMessage = CommonUtils.findViewById(view,R.id.listView);
         mAdapter = new MessageAdapter(getActivity(), mList);

@@ -4,14 +4,17 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.uit.bannhanong.DTO.Engineer;
 import com.example.uit.bannhanong.MainApplication;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseFragmentActivity;
+import com.example.uit.bannhanong.fragment.EngineerPublicFragment;
 import com.example.uit.bannhanong.fragment.HomeFragment;
 import com.example.uit.bannhanong.fragment.LocationFragment;
 import com.example.uit.bannhanong.fragment.WorkshopFragment;
@@ -29,6 +32,8 @@ public class MainActivity extends BaseFragmentActivity implements
     private View mMenuBtn;
     private boolean mIsViewBottomMenu = false;
 
+    private ImageView ivMenuVitualFence, ivMenuVitualLeash;
+
     @Override
     protected Fragment onCreateMainFragment(Bundle savedInstanceState) {
         return HomeFragment.newInstance();
@@ -45,7 +50,6 @@ public class MainActivity extends BaseFragmentActivity implements
         setContentView(R.layout.activity_main);
         MainApplication.setMySocket(new MySocket(this));
         MainApplication.getMySocket().connectSocket();
-
         attachTab();
     }
 
@@ -67,6 +71,9 @@ public class MainActivity extends BaseFragmentActivity implements
         mTvTabMarket = CommonUtils.findViewById(this, R.id.tab_tv_activity);
         mTvTabWorkshop = CommonUtils.findViewById(this, R.id.tab_tv_training);
         mTvTabMap = CommonUtils.findViewById(this, R.id.tab_tv_map);
+
+        ivMenuVitualFence = CommonUtils.findViewById(this, R.id.menu_virtual_fence_iv);
+        ivMenuVitualLeash = CommonUtils.findViewById(this, R.id.menu_virtual_leash_iv);
 
         mIvTabPrice.setImageResource(R.drawable.icon_tab_price_active);
         mTvTabPrice.setTextColor(getResources().getColor(R.color.tab_text_active_color));
@@ -120,7 +127,10 @@ public class MainActivity extends BaseFragmentActivity implements
         });
 
         mMenuBtn.setOnClickListener(this);
+        ivMenuVitualFence.setOnClickListener(this);
+        ivMenuVitualLeash.setOnClickListener(this);
         mBottomMenuView.setBottomMenuListener(this);
+
 
     }
 
@@ -154,6 +164,9 @@ public class MainActivity extends BaseFragmentActivity implements
                 }
                 mIsViewBottomMenu = !mIsViewBottomMenu;
                 break;
+            case R.id.menu_virtual_fence_iv:
+                EngineerPublicFragment engineerPublicFragment = new EngineerPublicFragment();
+                showFragmentWithClearStackMode(engineerPublicFragment);
             default:
                 break;
         }

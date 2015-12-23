@@ -17,12 +17,13 @@ import java.util.List;
 
 import com.example.uit.bannhanong.DTO.Engineer;
 import com.example.uit.bannhanong.R;
+import com.example.uit.bannhanong.caches.ImageLoaderUtil;
 import com.example.uit.bannhanong.fragment.EngineerDetailFragment;
 import com.example.uit.bannhanong.fragment.WorkshopFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
 public class EngineerAdapter extends ArrayAdapter<Engineer> {
-    private TextView mTvName, mTvContact, mTvTime, mTvType;
+    private TextView mTvName, mTvPlace, mTvTime, mTvSpecialized;
     private ImageView mIvAvatar;
 
     Context context;
@@ -40,15 +41,21 @@ public class EngineerAdapter extends ArrayAdapter<Engineer> {
     @Override
     public View getView(int vitri, View v, ViewGroup viewGroup){
         View view = View.inflate(context, resource, null);
-
-
+        Engineer engineer = list.get(vitri);
         mTvName = CommonUtils.findViewById(view, R.id.tv_name_engineer);
-        mTvContact = CommonUtils.findViewById(view, R.id.tv_contact_engineer);
+        mTvPlace = CommonUtils.findViewById(view, R.id.tv_place);
         mTvTime = CommonUtils.findViewById(view, R.id.tv_time_engineer);
-        mTvType = CommonUtils.findViewById(view, R.id.tv_type_engineer);
+        mTvSpecialized = CommonUtils.findViewById(view, R.id.tv_specialized);
         mIvAvatar = CommonUtils.findViewById(view, R.id.iv_avatar_engineer);
 
-        mIvAvatar.setImageResource(list.get(vitri).getAvatar());
+        if(list.get(vitri).avatar != null) {
+            ImageLoaderUtil.display(engineer.avatar, mIvAvatar);
+        }
+        mTvName.setText(engineer.username);
+        mTvPlace.setText(engineer.country);
+        //mTvTime.setText(engineer.createdAt);
+        mTvSpecialized.setText(engineer.specialized);
+
         return view;
     }
 

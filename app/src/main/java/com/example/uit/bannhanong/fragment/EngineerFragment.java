@@ -15,6 +15,10 @@ import com.example.uit.bannhanong.DTO.Engineer;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.adapter.EngineerAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
+import com.example.uit.bannhanong.connection.ApiLink;
+import com.example.uit.bannhanong.connection.base.Method;
+import com.example.uit.bannhanong.connection.request.GetListUserRequest;
+import com.example.uit.bannhanong.connection.response.ListUserResponse;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
 import java.util.ArrayList;
@@ -24,6 +28,8 @@ public class EngineerFragment extends BaseMainFragment {
 
     private ListView mLvEngineer;
     List<Engineer> listEngineer;
+    GetListUserRequest mGetListUserRequest;
+    EngineerAdapter engineerAdapter;
 
 
     public static EngineerFragment newInstance() {
@@ -51,27 +57,41 @@ public class EngineerFragment extends BaseMainFragment {
     @Override
     protected void initData() {
         listEngineer = new ArrayList<Engineer>();
-        Engineer engineer = new Engineer();
-        engineer.setAvatar(R.drawable.avatar_1);
-        listEngineer.add(engineer);
-        listEngineer.add(engineer);
-        listEngineer.add(engineer);
-        listEngineer.add(engineer);
-        listEngineer.add(engineer);
-        listEngineer.add(engineer);
-        listEngineer.add(engineer);
-        listEngineer.add(engineer);
-        listEngineer.add(engineer);
+        engineerAdapter = new EngineerAdapter(getActivity(), R.layout.item_engineer, listEngineer);
 
-        EngineerAdapter engineerAdapter = new EngineerAdapter(getActivity(), R.layout.item_engineer, listEngineer);
-        mLvEngineer.setAdapter(engineerAdapter);
+        getListUsers();
 
         mLvEngineer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EngineerDetailFragment engineerDetailFragment = EngineerDetailFragment.newInstance();
+                Bundle bundle =new Bundle(); bundle.putSerializable("1", listEngineer.get(position));
+                engineerDetailFragment.setArguments(bundle);
                 showFragmentWithClearStackMode(engineerDetailFragment);
             }
         });
+    }
+
+    private void getListUsers() {
+        String api = "http://192.168.38.1:3000/users/getAllFriends";
+        mGetListUserRequest = new GetListUserRequest(Method.GET, /*ApiLink.getContactLink()*/api, null, null) {
+            @Override
+            protected void onStart() {
+            }
+
+            @Override
+            protected void onSuccess(ListUserResponse entity, int statusCode, String message) {
+                listEngineer.clear();
+                listEngineer.addAll(entity.data);
+                engineerAdapter.notifyDataSetChanged();
+                mLvEngineer.setAdapter(engineerAdapter);
+            }
+
+            @Override
+            protected void onError(int statusCode, String message) {
+                Toast.makeText(getActivity(), "Get failed with error: " + message, Toast.LENGTH_SHORT).show();
+            }
+        };
+        mGetListUserRequest.execute();
     }
 }

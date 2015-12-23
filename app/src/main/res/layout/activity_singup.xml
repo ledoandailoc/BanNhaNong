@@ -60,10 +60,10 @@
         android:layout_marginTop="7dp"
         android:background="@drawable/edit_text_border"
         android:gravity="center"
-        android:hint="Chiều cao"
+        android:hint="Số điện thoại"
         android:inputType="phone"
         android:singleLine="true"
-        android:text="172" />
+        android:text="0985735314" />
 
     <EditText
         android:id="@+id/edtCountry"
@@ -74,9 +74,9 @@
         android:layout_marginTop="7dp"
         android:background="@drawable/edit_text_border"
         android:gravity="center"
-        android:hint="Cân nặng"
+        android:hint="Quê quán"
         android:singleLine="true"
-        android:text="65" />
+        android:text="Đắc Lắc" />
 
     <RadioGroup
         android:id="@+id/rgGender"
