@@ -9,11 +9,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.uit.bannhanong.MainApplication;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseFragmentActivity;
 import com.example.uit.bannhanong.fragment.HomeFragment;
 import com.example.uit.bannhanong.fragment.LocationFragment;
 import com.example.uit.bannhanong.fragment.WorkshopFragment;
+import com.example.uit.bannhanong.socketio.MySocket;
 import com.example.uit.bannhanong.utils.CommonUtils;
 import com.example.uit.bannhanong.view.BottomMenuView;
 
@@ -41,6 +43,8 @@ public class MainActivity extends BaseFragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MainApplication.setMySocket(new MySocket(this));
+        MainApplication.getMySocket().connectSocket();
 
         attachTab();
     }

@@ -43,6 +43,16 @@
     <!-- Item price agri -->
 
     <dimen name="item_price_height">40dp</dimen>
-    <dimen name="item_price_image_height">20dp</dimen>
+
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="chat_fragment_avatar_size">38dp</dimen>
+
+    <!-- Chat Fragment -->
+    <dimen name="chat_fragment_text_size">20dp</dimen>
+    <dimen name="chat_fragment_padding_size">5dp</dimen>
+    <dimen name="chat_fragment_min_hight_image">80dp</dimen>
+    <dimen name="chat_fragment_width_image_size">160dp</dimen>
+    <dimen name="chat_fragment_border_avatar_size">2dp</dimen>
 
 </resources>

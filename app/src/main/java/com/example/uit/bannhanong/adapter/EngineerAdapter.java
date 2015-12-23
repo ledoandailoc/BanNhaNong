@@ -1,6 +1,8 @@
 package com.example.uit.bannhanong.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -8,17 +10,20 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 
 import com.example.uit.bannhanong.DTO.Engineer;
 import com.example.uit.bannhanong.R;
+import com.example.uit.bannhanong.fragment.EngineerDetailFragment;
+import com.example.uit.bannhanong.fragment.WorkshopFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
 
 public class EngineerAdapter extends ArrayAdapter<Engineer> {
     private TextView mTvName, mTvContact, mTvTime, mTvType;
-    private ImageButton mIvAvatar;
+    private ImageView mIvAvatar;
 
     Context context;
     int resource;
@@ -41,11 +46,9 @@ public class EngineerAdapter extends ArrayAdapter<Engineer> {
         mTvContact = CommonUtils.findViewById(view, R.id.tv_contact_engineer);
         mTvTime = CommonUtils.findViewById(view, R.id.tv_time_engineer);
         mTvType = CommonUtils.findViewById(view, R.id.tv_type_engineer);
+        mIvAvatar = CommonUtils.findViewById(view, R.id.iv_avatar_engineer);
 
-        mIvAvatar = CommonUtils.findViewById(view, R.id.iv_avatar);
-
-        Engineer medication = list.get(vitri);
-
+        mIvAvatar.setImageResource(list.get(vitri).getAvatar());
         return view;
     }
 

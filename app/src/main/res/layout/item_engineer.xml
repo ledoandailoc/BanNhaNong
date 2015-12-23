@@ -10,7 +10,7 @@
         android:layout_marginBottom="6dp"
         android:background="@drawable/bg_item_engineer_radius"
         >
-        <ImageButton
+        <ImageView
             android:layout_width="82dp"
             android:layout_height="82dp"
 
