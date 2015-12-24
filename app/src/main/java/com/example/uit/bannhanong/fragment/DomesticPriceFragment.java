@@ -15,14 +15,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SearchView;
+
 import android.widget.Spinner;
-import android.widget.Toast;
+
 
 import com.example.uit.bannhanong.DTO.Agricultural;
 import com.example.uit.bannhanong.DTO.Preference.AgriculturalPref;
-import com.example.uit.bannhanong.DTO.Preference.ListAgriculturalPref;
-import com.example.uit.bannhanong.DTO.Preference.ListSearchAgriculturalPref;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.adapter.AgriculturalPriceAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
@@ -66,7 +64,7 @@ public class DomesticPriceFragment extends BaseMainFragment {
 
     @Override
     protected void initContentViews(View view) {
-        mLvAgricultural = CommonUtils.findViewById(view, R.id.lv_engineer);
+        mLvAgricultural = CommonUtils.findViewById(view, R.id.lv_agricultural);
         mBtnSearch = (ImageView) CommonUtils.findViewById(view, R.id.iv_search);
     }
 

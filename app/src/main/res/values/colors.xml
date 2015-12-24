@@ -38,6 +38,11 @@
     <!-- Actionbar -->
     <color name="actionbar_bg_color">#009688</color>
     <color name="actionbar_title_color">#fff</color>
+    <color name="action_bar_bg_selected">#6470b5</color>
+
+    <!-- Action Bar v2 -->
+    <color name="action_bar_bg_color">#3f51b5</color>
+    <color name="action_bar_title_color">#fff</color>
 
     <!-- Under Background-->
     <color name="under_bg">#A9A9A9</color>
@@ -47,4 +52,8 @@
     <color name="bg_tab_record_color">#242d36</color>
     <color name="tab_record_text_color">#afafaf</color>
     <color name="tab_record_text_active_color">#29a9b3</color>
+
+    <!--Online offline-->
+    <color name="isOnline">#6166AE</color>
+    <color name="isOffline">#c9c8c7</color>
 </resources>

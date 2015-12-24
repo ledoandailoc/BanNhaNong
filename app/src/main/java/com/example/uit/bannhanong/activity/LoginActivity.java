@@ -44,15 +44,15 @@ public class LoginActivity extends Activity {
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*signIn();*/
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(i);
+                signIn();
+                /*Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(i);*/
             }
         });
         mTvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                Intent i = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(i);
             }
         });
@@ -82,7 +82,7 @@ public class LoginActivity extends Activity {
         HashMap<String, String> params = new HashMap<>();
         params.put("username", mEdtEmail.getText().toString().trim());
         params.put("password", mEditPassword.getText().toString().trim());
-        String api = "http://192.168.198.1:3000/users/login";
+        String api = "http://192.168.38.1:3000/users/login";
         mLoginRequest = new LoginRequest(Method.POST, api, null, params) {
 
             @Override

@@ -119,7 +119,7 @@ public class SignupActivity extends Activity {
         params.put("gender", String.valueOf(gender));
         params.put("phone", mEdtPhoneNumber.getText().toString().trim());
         params.put("country", mEdtCountry.getText().toString().trim());
-        String api = "http://192.168.198.1:3000/users/signup";
+        String api = "http://192.168.38.1:3000/users/signup";
         mSignupRequest = new SignupRequest(Method.POST, api, null, params) {
 
             @Override

@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.Control.Chat"
+    android:background="#fff">
+
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/actionbar_top_activity" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/actionbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/linearLayout5"
+            android:background="@color/action_bar_bg_selected">
+
+            <EditText
+                android:layout_marginLeft="6dp"
+                android:layout_width="300dp"
+                android:layout_height="56dp"
+                android:hint="Nhập tin nhắn"
+                android:id="@+id/edt_chat_message"
+                />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="7dp"
+                android:id="@+id/mBtnSend"
+                android:src="@drawable/icon_send"
+                />
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            android:listSelector="@android:color/transparent"
+            android:layout_above="@+id/linearLayout5"
+            android:divider="#fff"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

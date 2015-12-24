@@ -1,48 +1,58 @@
 package com.example.uit.bannhanong.DTO;
 
-/**
- * Created by Anhtuan on 12/15/2015.
- */
-public class Engineer {
-    int avatar, name, contact, time, type;
+import com.example.uit.bannhanong.DTO.Statistic;
 
-    public int getAvatar() {
-        return avatar;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
+
+public class Engineer implements Serializable {
+
+    public String _id;
+    public String username;
+    public String phone = "0985735314";
+    public String country = "Đắc Lắc";
+    public String specialized = "Kĩ sư nông nghiệp";
+    public String createdAt;
+    public String avatar;
+    public String token;
+    public String latitude, longitude;
+
+    public Engineer() {
+
     }
 
-    public void setAvatar(int avatar) {
-        this.avatar = avatar;
-    }
-
-    public int getName() {
-        return name;
-    }
-
-    public void setName(int name) {
-        this.name = name;
-    }
-
-    public int getContact() {
-        return contact;
-    }
-
-    public void setContact(int contact) {
-        this.contact = contact;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
+    public Engineer(JSONObject json) throws JSONException {
+        if (json.has("latitude")) {
+            this.latitude = json.getString("latitude");
+        }
+        if (json.has("longitude")) {
+            this.longitude = json.getString("longitude");
+        }
+        if (json.has("username")) {
+            this.username = json.getString("username");
+        }
+        if (json.has("createdAt")) {
+            this.createdAt = json.getString("createdAt");
+        }
+        if (json.has("avatar")) {
+            this.avatar = json.getString("avatar");
+        }
+        if (json.has("token")) {
+            this.token = json.getString("token");
+        }
+        if (json.has("phone")) {
+            this.phone = json.getString("phone");
+        }
+        if (json.has("country")) {
+            this.country = json.getString("country");
+        }
+        if (json.has("specialized")) {
+            this.specialized = json.getString("specialized");
+        }
+        if (json.has("_id")) {
+            this._id = json.getString("_id");
+        }
     }
 }

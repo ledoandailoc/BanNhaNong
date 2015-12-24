@@ -7,13 +7,20 @@
     android:fitsSystemWindows="true"
     tools:context=".activity.MainActivity"
     >
-    <ListView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lv_engineer"
-        android:layout_marginTop="7dp"
-        android:divider="@color/tab_workshop_bg_color">
-    </ListView>
+        android:background="@drawable/bg_backgroud_engineer_radius"
+        android:layout_margin="5dp">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lv_engineer"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:divider="@color/tab_workshop_bg_color">
+        </ListView>
+    </RelativeLayout>
 
 
 </RelativeLayout>

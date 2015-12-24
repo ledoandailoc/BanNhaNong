@@ -10,7 +10,7 @@
         android:layout_marginBottom="6dp"
         android:background="@drawable/bg_item_engineer_radius"
         >
-        <ImageButton
+        <ImageView
             android:layout_width="82dp"
             android:layout_height="82dp"
 
@@ -41,7 +41,7 @@
             android:layout_toRightOf="@+id/iv_avatar_engineer"
             android:layout_below="@+id/tv_name_engineer"
             android:layout_marginLeft="4dp"
-            android:id="@+id/tv_contact_engineer"
+            android:id="@+id/tv_place"
             android:layout_marginTop="15dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_item_engineer_type_radius"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/tv_contact_engineer"
+            android:layout_below="@+id/tv_place"
             android:layout_marginRight="8dp">
             <TextView
                 android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
                 android:layout_marginRight="3dp"
                 android:layout_marginLeft="3dp"
                 android:textColor="#fff"
-                android:id="@+id/tv_type_engineer"/>
+                android:id="@+id/tv_specialized"/>
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

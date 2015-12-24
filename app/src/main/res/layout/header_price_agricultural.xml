@@ -68,7 +68,7 @@
             android:id="@+id/iv_volatility_price"
             android:layout_width="0dp"
             android:layout_weight="0.2"
-            android:layout_height="@dimen/item_price_image_height"
+            android:layout_height="40dp"
             android:visibility="visible"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="@dimen/common_distance_lv_2"
