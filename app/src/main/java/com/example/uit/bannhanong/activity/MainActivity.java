@@ -19,6 +19,7 @@ import com.example.uit.bannhanong.MainApplication;
 
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseFragmentActivity;
+import com.example.uit.bannhanong.fragment.EngineerHostFragment;
 import com.example.uit.bannhanong.fragment.EngineerPublicFragment;
 import com.example.uit.bannhanong.fragment.HomeFragment;
 import com.example.uit.bannhanong.fragment.LocationFragment;

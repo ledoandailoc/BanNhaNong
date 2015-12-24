@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.uit.bannhanong.DTO.Agricultural;
 import com.example.uit.bannhanong.DTO.Engineer;
+import com.example.uit.bannhanong.MainApplication;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.adapter.AgriculturalPriceAdapter;
 import com.example.uit.bannhanong.adapter.EngineerAdapter;
@@ -77,12 +78,9 @@ public class EngineerFragment extends BaseMainFragment {
         listEngineer.add(engineer);
 
 
-        EngineerAdapter engineerAdapter = new EngineerAdapter(getActivity(), R.layout.item_engineer, listEngineer);
+        engineerAdapter = new EngineerAdapter(getActivity(), R.layout.item_engineer, listEngineer);
         mLvEngineer.setAdapter(engineerAdapter);
 
-
-
-        engineerAdapter = new EngineerAdapter(getActivity(), R.layout.item_engineer, listEngineer);
 
         getListUsers();
 
@@ -114,7 +112,7 @@ public class EngineerFragment extends BaseMainFragment {
 
             @Override
             protected void onError(int statusCode, String message) {
-                Toast.makeText(getActivity(), "Get failed with error: " + message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainApplication.getContext(), "Get failed with error: " + message, Toast.LENGTH_SHORT).show();
             }
         };
         mGetListUserRequest.execute();

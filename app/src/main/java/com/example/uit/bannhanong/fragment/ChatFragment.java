@@ -130,7 +130,7 @@ public class ChatFragment extends BaseMainFragment {
 
             @Override
             protected void onError(int statusCode, String message) {
-                Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainApplication.getContext(), message, Toast.LENGTH_SHORT).show();
             }
         };
         mGetListMessageByUserIdRequest.execute();
