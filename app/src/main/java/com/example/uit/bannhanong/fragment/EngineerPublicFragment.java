@@ -6,18 +6,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.uit.bannhanong.DTO.Engineer;
+import com.example.uit.bannhanong.DTO.User;
 import com.example.uit.bannhanong.MainApplication;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseMainFragment;
+import com.example.uit.bannhanong.caches.ImageLoaderUtil;
 import com.example.uit.bannhanong.connection.base.Method;
 import com.example.uit.bannhanong.connection.request.UpdateRequest;
 import com.example.uit.bannhanong.connection.response.UpdateResponse;
 import com.example.uit.bannhanong.utils.CommonUtils;
 import com.example.uit.bannhanong.utils.UserPref;
+import com.example.uit.bannhanong.view.CircleImageView;
 
 import java.util.HashMap;
 
@@ -27,11 +32,15 @@ public class EngineerPublicFragment extends BaseMainFragment {
         return false;
     }
 
-    TextView mEdtPhoneNumber, mEdtSpecialized, mEdtPlace;
+    EditText mEdtPhoneNumber, mEdtSpecialized, mEdtPlace;
+    TextView mEdtName;
+
     UserPref userPref;
     UpdateRequest mUpdateRequest;
     Button mBtnApply;
     ImageView mIvBack;
+    User engineer;
+    CircleImageView mCivAvatar;
 
     public static EngineerPublicFragment newInstance() {
         return new EngineerPublicFragment();
@@ -55,8 +64,11 @@ public class EngineerPublicFragment extends BaseMainFragment {
         mEdtPlace = CommonUtils.findViewById(view, R.id.edt_place);
         mBtnApply = CommonUtils.findViewById(view, R.id.btn_apply);
         mIvBack = CommonUtils.findViewById(view, R.id.iv_back);
+        mCivAvatar = CommonUtils.findViewById(view, R.id.civ_avatar);
+        mEdtName = CommonUtils.findViewById(view, R.id.tv_name);
 
         userPref = new UserPref();
+        engineer = userPref.getUser();
     }
 
     @Override
@@ -78,6 +90,11 @@ public class EngineerPublicFragment extends BaseMainFragment {
 
     @Override
     protected void initData() {
+        ImageLoaderUtil.display(engineer.avatar, mCivAvatar);
+        mEdtName.setText(engineer.username);
+        mEdtPlace.setText(engineer.place);
+        mEdtPhoneNumber.setText(engineer.phone);
+        mEdtSpecialized.setText(engineer.specialized);
     }
 
     private void update() {
