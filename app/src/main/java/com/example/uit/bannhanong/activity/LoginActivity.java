@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.uit.bannhanong.DTO.Agricultural;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.connection.ApiLink;
 import com.example.uit.bannhanong.connection.base.Method;
@@ -16,6 +17,8 @@ import com.example.uit.bannhanong.connection.request.LoginRequest;
 import com.example.uit.bannhanong.connection.response.LoginResponse;
 import com.example.uit.bannhanong.utils.UserPref;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

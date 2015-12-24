@@ -16,10 +16,10 @@
     </style>
 
     <style name="tv_daily">
-    <item name="android:textSize">100dp</item>
-    <item name="android:textColor">@color/app_green</item>
-    <item name="android:textStyle">bold</item>
-    <item name="android:text">BNN</item>
+        <item name="android:textSize">100dp</item>
+        <item name="android:textColor">@color/app_green</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">BNN</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

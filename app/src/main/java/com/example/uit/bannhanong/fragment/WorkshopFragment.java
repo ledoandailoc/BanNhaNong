@@ -1,10 +1,12 @@
 package com.example.uit.bannhanong.fragment;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,16 +14,21 @@ import android.widget.TextView;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.adapter.WorkshopPagerAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
+import com.example.uit.bannhanong.utils.AnimationUtils;
 import com.example.uit.bannhanong.utils.CommonUtils;
+import com.example.uit.bannhanong.view.SearchView;
 
-public class WorkshopFragment extends BaseMainFragment {
+public class WorkshopFragment extends BaseMainFragment implements SearchView.BottomMenuListener, View.OnClickListener{
 
     ViewPager viewPager;
     WorkshopPagerAdapter mPagerAdapter;
 
     private RelativeLayout mRlTabSeminar, mRlTabEngineer, mRlTabNews;
-    private TextView mTvTabSeminar, mTvTabEngineer, mTvTabNews;
     private LinearLayout mLnTabSeminar, mLnTabEngineer, mLnTabNews;
+     ImageView mIvSearch;
+
+    private boolean mIsViewBottomMenu = false;
+    private SearchView mSearchView;
 
     public static WorkshopFragment newInstance() {
         return new WorkshopFragment();
@@ -39,6 +46,7 @@ public class WorkshopFragment extends BaseMainFragment {
     @Override
     protected void initContentViews(View view) {
         viewPager = CommonUtils.findViewById(view, R.id.vp_workshop);
+        mIvSearch = CommonUtils.findViewById(view, R.id.actionbar_iv_search);
     }
 
     @Override
@@ -73,13 +81,14 @@ public class WorkshopFragment extends BaseMainFragment {
     }
 
     private void attachTab (View v){
+        mSearchView = CommonUtils.findViewById(v, R.id.searchView);
+        mIvSearch.setOnClickListener(this);
+        mSearchView.setBottomMenuListener(this);
+
+
         mRlTabSeminar = CommonUtils.findViewById(v, R.id.rl_tab_seminar);
         mRlTabEngineer = CommonUtils.findViewById(v, R.id.rl_tab_engineer);
         mRlTabNews = CommonUtils.findViewById(v, R.id.rl_tab_news);
-
-        mTvTabSeminar = CommonUtils.findViewById(v, R.id.tv_tab_seminar);
-        mTvTabEngineer = CommonUtils.findViewById(v, R.id.tv_tab_engineer);
-        mTvTabNews = CommonUtils.findViewById(v, R.id.tv_tab_news);
 
         mLnTabSeminar = CommonUtils.findViewById(v, R.id.tab_seminar_divider);
         mLnTabEngineer = CommonUtils.findViewById(v, R.id.tab_engineer_divider);
@@ -111,6 +120,34 @@ public class WorkshopFragment extends BaseMainFragment {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.actionbar_iv_search:
+                if (!mIsViewBottomMenu) {
+                    ViewCompat.animate(this.mSearchView).translationY(0.0F).
+                            setInterpolator(AnimationUtils.DECELERATE_CUBIC_INTERPOLATOR)
+                            .setDuration(800L).setStartDelay(100).start();
+                    this.mSearchView.setVisibility(View.VISIBLE);
+                } else {
+
+                }
+                mIsViewBottomMenu = !mIsViewBottomMenu;
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onBottomMenuHidden() {
+        ViewCompat.animate(this.mSearchView).translationY(mSearchView.getHeight()).
+                setInterpolator(AnimationUtils.DECELERATE_CUBIC_INTERPOLATOR)
+                .setDuration(400L).setStartDelay(100).start();
+        mIsViewBottomMenu = !mIsViewBottomMenu;
+        this.mSearchView.setVisibility(View.GONE);
+    }
+
     private void unSelectAllTab() {
         mLnTabSeminar.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color));
         mLnTabEngineer.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color));
@@ -126,6 +163,8 @@ public class WorkshopFragment extends BaseMainFragment {
             mLnTabNews.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
         } else mLnTabSeminar.setBackgroundColor(getResources().getColor(R.color.tab_workshop_divider_color_active));
     }
+
+
 
     public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.85f;

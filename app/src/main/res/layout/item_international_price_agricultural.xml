@@ -20,9 +20,10 @@
             android:layout_marginRight="8dp"
             android:layout_marginLeft="@dimen/common_distance_lv_1"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:text="Tên"
+            android:text="Cà phê"
+            android:id="@+id/tv_agricultural_name"
             android:textColor="#000"
             android:textStyle="bold"
             android:textSize="13dp"
@@ -30,49 +31,54 @@
             />
 
         <TextView
-            android:layout_marginLeft="@dimen/common_distance_lv_1"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Tỉnh"
+            android:text="170000/kg"
+            android:id="@+id/tv_agricultural_price"
             android:textColor="#000"
-            android:textStyle="bold"
             android:textSize="13dp"
             android:layout_gravity="center_vertical"
             />
+
         <TextView
-            android:layout_marginLeft="@dimen/common_distance_lv_1"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Giá hôm nay"
+            android:text="170000/kg"
+            android:id="@+id/tv_yesterday_agricultural_price"
             android:textColor="#000"
-            android:textStyle="bold"
-            android:textSize="13dp"
-            android:layout_gravity="center_vertical"
-            />
-        <TextView
-            android:layout_marginLeft="@dimen/common_distance_lv_1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Giá hôm qua"
-            android:textColor="#000"
-            android:textStyle="bold"
             android:textSize="13dp"
             android:layout_gravity="center_vertical"
             />
 
 
         <LinearLayout
-            android:id="@+id/iv_volatility_price"
-            android:layout_width="0dp"
-            android:layout_weight="0.2"
-            android:layout_height="@dimen/item_price_image_height"
-            android:visibility="visible"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="@dimen/common_distance_lv_2"
-            android:orientation="horizontal" />
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7">
+
+            <ImageView
+                android:id="@+id/iv_volatility_price"
+                android:layout_width="@dimen/item_price_image_height"
+                android:layout_height="@dimen/item_price_image_height"
+                android:src="@drawable/ic_increase"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textSize="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:id="@+id/tv_status" />
+        </LinearLayout>
+
+
 
 
     </LinearLayout>

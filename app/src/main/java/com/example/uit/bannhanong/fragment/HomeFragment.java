@@ -1,5 +1,6 @@
 package com.example.uit.bannhanong.fragment;
 
+import android.app.Dialog;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -7,17 +8,30 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.uit.bannhanong.DTO.Agricultural;
+import com.example.uit.bannhanong.DTO.Preference.AgriculturalPref;
+import com.example.uit.bannhanong.DTO.Preference.ListAgriculturalPref;
+import com.example.uit.bannhanong.DTO.Preference.ListSearchAgriculturalPref;
 import com.example.uit.bannhanong.R;
+import com.example.uit.bannhanong.adapter.AgriculturalPriceAdapter;
 import com.example.uit.bannhanong.adapter.AgriculturePricePagerAdapter;
 import com.example.uit.bannhanong.adapter.WorkshopPagerAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.content.res.Resources.*;
 
@@ -27,8 +41,12 @@ public class HomeFragment extends BaseMainFragment {
     private TextView mTvTabDomestic, mTvTabInternational;
     private LinearLayout mLnTabDomestic, mLnTabInternational;
 
+
+
     AgriculturePricePagerAdapter mPagerAdapter;
     ViewPager viewPager;
+    ListAgriculturalPref listAgriculturalPref = new ListAgriculturalPref();
+    ListSearchAgriculturalPref listSearchAgriculturalPref = new ListSearchAgriculturalPref();
 
 
     public static HomeFragment newInstance() {
@@ -43,7 +61,7 @@ public class HomeFragment extends BaseMainFragment {
 
     @Override
     protected String getScreenTitle() {
-        return null;
+        return "Giá cả nông sản";
     }
 
     @Override
@@ -79,7 +97,66 @@ public class HomeFragment extends BaseMainFragment {
 
             }
         });
+
     }
+
+
+
+    /*public void attackSearchView(){
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText.toString().toLowerCase(Locale.getDefault()));
+                Toast.makeText(getActivity(), newText.toString().toLowerCase(Locale.getDefault()), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+    }
+
+    public void filter(String charSearching) {
+        mAgricultualListSearching = new ArrayList<>();
+        charSearching = charSearching.toLowerCase(Locale.getDefault());
+        mAgricultualListSearching.clear();
+        if (charSearching.length() == 0) {
+            this.mAgricultualListSearching.addAll(listAgricultual);
+        } else {
+            for (int i = 0; i < listAgricultual.size(); i++) {
+                if ((listAgricultual.get(i)).getName().toLowerCase(Locale.getDefault()).contains(charSearching)) {
+                    mAgricultualListSearching.add(listAgricultual.get(i));
+                }
+            }
+        }
+
+        AgriculturalPriceAdapter adapter = new AgriculturalPriceAdapter(getActivity(), R.layout.item_price_agricultural, mAgricultualListSearching);
+        mLvAgricultural.setAdapter(adapter);
+    }
+
+
+            public ArrayList<String> getProvinceList(ArrayList<AgriculturalPref> agriculturals) {
+                ArrayList<String> provinceList = new ArrayList<>();
+                provinceList.add("Tất cả các tỉnh");
+                for (AgriculturalPref agricultural : agriculturals) {
+                    if (!provinceList.contains(agricultural.province))
+                        provinceList.add(agricultural.province);
+
+                }
+                return provinceList;
+            }
+
+            public ArrayList<AgriculturalPref> getAgriculturalListByProvince(ArrayList<AgriculturalPref> list, String province) {
+                ArrayList<AgriculturalPref> listAgricultural = new ArrayList<>();
+                for (AgriculturalPref agricultural : list) {
+                    if (agricultural.province.equals(province)) listAgricultural.add(agricultural);
+                }
+                return listAgricultural;
+            }
+        */
 
     private void attachTab(View v) {
 
@@ -133,7 +210,7 @@ public class HomeFragment extends BaseMainFragment {
         }
     }
 
-    public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
+    class ZoomOutPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.85f;
         private static final float MIN_ALPHA = 0.5f;
 
@@ -164,4 +241,5 @@ public class HomeFragment extends BaseMainFragment {
             }
         }
     }
+
 }

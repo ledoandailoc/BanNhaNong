@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <!-- Common -->
+    <color name="transparent_color">#00000000</color>
     <color name="transparent_bg_color">#55000000</color>
     <color name="transparent_dark_bg_color">#80000000</color>
     <color name="white">#fff</color>

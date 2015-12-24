@@ -6,9 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Spinner;
 
+import com.example.uit.bannhanong.DTO.Agricultural;
 import com.example.uit.bannhanong.DTO.Engineer;
 import com.example.uit.bannhanong.R;
+import com.example.uit.bannhanong.adapter.AgriculturalPriceAdapter;
 import com.example.uit.bannhanong.adapter.EngineerAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
 import com.example.uit.bannhanong.utils.CommonUtils;
@@ -20,6 +24,11 @@ public class EngineerFragment extends BaseMainFragment {
 
     private ListView mLvEngineer;
     List<Engineer> listEngineer;
+    Spinner spinnerProvince;
+    SearchView searchView;
+    private ListView mLvAgricultural;
+    ArrayList<Agricultural> listAgricultual = new ArrayList<>();
+
 
 
     public static EngineerFragment newInstance() {
@@ -61,5 +70,7 @@ public class EngineerFragment extends BaseMainFragment {
 
         EngineerAdapter engineerAdapter = new EngineerAdapter(getActivity(), R.layout.item_engineer, listEngineer);
         mLvEngineer.setAdapter(engineerAdapter);
+
+
     }
 }

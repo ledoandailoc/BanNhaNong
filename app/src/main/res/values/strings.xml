@@ -59,4 +59,5 @@
     <string name="txtemail">Email</string>
     <string name="tvForgot">Will we send you a reset password link to your inbox</string>
     <string name="btnForgot">Forgot</string>
+    <string name="title_activity_sale">SaleActivity</string>
 </resources>

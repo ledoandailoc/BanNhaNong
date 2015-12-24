@@ -1,38 +1,80 @@
 package com.example.uit.bannhanong.DTO;
 
+import java.io.Serializable;
+
 /**
  * Created by ledoa on 12/15/2015.
  */
-public class Agricultural {
+public class Agricultural implements Serializable{
 
-     String name;
-     int priceDomestic;
-     int priceInternational;
-     String unit;
-     String status;
+    public int id;
+    public String name;
+    public  double priceToDayDomestic;
+    public  double priceYesterdayDomestic;
+    public  double priceTodayInternational;
+    public  double priceYesterdayInternational;
+    public  String province;
+    public  String status;
+    public  String unit;
 
-    public int getPriceDomestic() {
-        return priceDomestic;
+    public Agricultural(){
+
     }
 
-    public void setPriceDomestic(int priceDomestic) {
-        this.priceDomestic = priceDomestic;
+    /*public int getId() {
+        return id;
     }
 
-    public int getPriceInternational() {
-        return priceInternational;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setPriceInternational(int priceInternational) {
-        this.priceInternational = priceInternational;
+    public String getName() {
+        return name;
     }
 
-    public String getUnit() {
-        return unit;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public double getPriceToDayDomestic() {
+        return priceToDayDomestic;
+    }
+
+    public void setPriceToDayDomestic(double priceToDayDomestic) {
+        this.priceToDayDomestic = priceToDayDomestic;
+    }
+
+    public double getPriceYesterdayDomestic() {
+        return priceYesterdayDomestic;
+    }
+
+    public void setPriceYesterdayDomestic(double priceYesterdayDomestic) {
+        this.priceYesterdayDomestic = priceYesterdayDomestic;
+    }
+
+    public double getPriceTodayInternational() {
+        return priceTodayInternational;
+    }
+
+    public void setPriceTodayInternational(double priceTodayInternational) {
+        this.priceTodayInternational = priceTodayInternational;
+    }
+
+    public double getPriceYesterdayInternational() {
+        return priceYesterdayInternational;
+    }
+
+    public void setPriceYesterdayInternational(double priceYesterdayInternational) {
+        this.priceYesterdayInternational = priceYesterdayInternational;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public String getStatus() {
@@ -43,11 +85,11 @@ public class Agricultural {
         this.status = status;
     }
 
-    public String getName() {
-        return name;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }*/
 }

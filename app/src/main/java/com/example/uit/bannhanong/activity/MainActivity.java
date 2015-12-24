@@ -4,18 +4,23 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.uit.bannhanong.DTO.Agricultural;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseFragmentActivity;
 import com.example.uit.bannhanong.fragment.HomeFragment;
 import com.example.uit.bannhanong.fragment.LocationFragment;
 import com.example.uit.bannhanong.fragment.WorkshopFragment;
+import com.example.uit.bannhanong.utils.AnimationUtils;
 import com.example.uit.bannhanong.utils.CommonUtils;
 import com.example.uit.bannhanong.view.BottomMenuView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends BaseFragmentActivity implements
         View.OnClickListener, BottomMenuView.BottomMenuListener{
@@ -41,6 +46,7 @@ public class MainActivity extends BaseFragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Bundle bundle = getIntent().getExtras();
 
         attachTab();
     }
@@ -141,9 +147,9 @@ public class MainActivity extends BaseFragmentActivity implements
         switch (v.getId()) {
             case R.id.main_menu_btn:
                 if (!mIsViewBottomMenu) {
-//                    ViewCompat.animate(this.mBottomMenuView).translationY(0.0F).
-//                            setInterpolator(AnimationUtils.DECELERATE_CUBIC_INTERPOLATOR)
-//                            .setDuration(400L).setStartDelay(100).start();
+                    ViewCompat.animate(this.mBottomMenuView).translationY(0.0F).
+                            setInterpolator(AnimationUtils.DECELERATE_CUBIC_INTERPOLATOR)
+                           .setDuration(400L).setStartDelay(100).start();
                     this.mBottomMenuView.setVisibility(View.VISIBLE);
                 } else {
 
@@ -157,12 +163,11 @@ public class MainActivity extends BaseFragmentActivity implements
 
     @Override
     public void onBottomMenuHidden() {
-      /*  ViewCompat.animate(this.mBottomMenuView).translationY(mBottomMenuView.getHeight()).
+        ViewCompat.animate(this.mBottomMenuView).translationY(mBottomMenuView.getHeight()).
                 setInterpolator(AnimationUtils.DECELERATE_CUBIC_INTERPOLATOR)
-                .setDuration(400L).setStartDelay(100).start();*/
+                .setDuration(400L).setStartDelay(100).start();
         mIsViewBottomMenu = !mIsViewBottomMenu;
         this.mBottomMenuView.setVisibility(View.GONE);
-        mIsViewBottomMenu = !mIsViewBottomMenu;
     }
 
 }

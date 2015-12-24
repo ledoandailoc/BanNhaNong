@@ -16,5 +16,15 @@
             android:textSize="@dimen/actionbar_title_size"
             android:textColor="@color/actionbar_title_color"
             android:text="Hội thảo"/>
+
+        <ImageView
+            android:layout_width="@dimen/actionbar_ic_setting_size"
+            android:layout_height="@dimen/actionbar_ic_setting_size"
+            android:layout_marginRight="@dimen/common_distance_lv_1"
+            android:src="@drawable/ic_search"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/actionbar_iv_search" />
     </RelativeLayout>
 </RelativeLayout>

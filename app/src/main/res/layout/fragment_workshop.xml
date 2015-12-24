@@ -29,4 +29,10 @@
             />
     </RelativeLayout>
 
+    <com.example.uit.bannhanong.view.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/searchView"
+        android:visibility="gone"></com.example.uit.bannhanong.view.SearchView>
+
 </RelativeLayout>
