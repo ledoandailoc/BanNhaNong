@@ -13,7 +13,7 @@ public class RootActivity extends Activity {
 
         UserPref userPref = new UserPref();
 
-        if (userPref.getUser() != null) {
+        if (true) {
             Intent i = new Intent(RootActivity.this, MainActivity.class);
             startActivity(i);
             finish();

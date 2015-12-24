@@ -105,14 +105,24 @@ public class InternationalPriceFragment extends BaseMainFragment {
                                 String value6 = el5.getElementsByTag("td").get(4).text().toString().replace(".", "").replace(",",".");
                                 String value7 =  el5.getElementsByTag("td").get(5).text().toString();
 
-
+                                Log.i("helo", value5 + value6);
                                 Agricultural agricultural = new Agricultural();
                                 agricultural.id = (Integer.parseInt(value1.toString()));
                                 agricultural.name = (value2.toString());
                                 agricultural.unit = (value3.toString());
                                 agricultural.province = ("");
-                                agricultural.priceToDayDomestic = (Double.parseDouble(String.valueOf(value5)));
-                                agricultural.priceYesterdayDomestic = (Double.parseDouble(String.valueOf(value6)));
+                                try {
+                                    agricultural.priceTodayInternational = (Double.parseDouble(String.valueOf(value5)));
+                                }
+                                catch (Exception e){
+                                    agricultural.priceTodayInternational = (0);
+                                }
+                                try {
+                                    agricultural.priceYesterdayInternational = (Double.parseDouble(String.valueOf(value6)));
+                                }
+                                catch (Exception e){
+                                    agricultural.priceYesterdayInternational = (0);
+                                }
                                 agricultural.status = (String.valueOf(value7));
 
                                 listAgricultual.add(agricultural);
