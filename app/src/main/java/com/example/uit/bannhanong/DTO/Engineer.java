@@ -12,11 +12,12 @@ public class Engineer implements Serializable {
     public String _id;
     public String username = "Nguyễn Văn Nông Nghiệp";
     public String phone = "0985735314";
-    public String country = "Đắc Lắc";
+    public String country;
     public String specialized = "Kĩ sư nông nghiệp";
     public String createdAt;
     public String avatar;
     public String token;
+    public String place = "Đắc Lắk";
     public String latitude, longitude;
 
     public Engineer() {
@@ -47,6 +48,9 @@ public class Engineer implements Serializable {
         }
         if (json.has("country")) {
             this.country = json.getString("country");
+        }
+        if (json.has("place")) {
+            this.place = json.getString("place");
         }
         if (json.has("specialized")) {
             this.specialized = json.getString("specialized");

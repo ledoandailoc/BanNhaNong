@@ -52,7 +52,7 @@ public class EngineerAdapter extends ArrayAdapter<Engineer> {
             ImageLoaderUtil.display(engineer.avatar, mIvAvatar);
         }
         mTvName.setText(engineer.username);
-        mTvPlace.setText(engineer.country);
+        mTvPlace.setText(engineer.place);
         //mTvTime.setText(engineer.createdAt);
         mTvSpecialized.setText(engineer.specialized);
 
