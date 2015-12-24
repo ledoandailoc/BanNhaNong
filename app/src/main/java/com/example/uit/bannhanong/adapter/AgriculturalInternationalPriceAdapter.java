@@ -39,16 +39,16 @@ public class AgriculturalInternationalPriceAdapter extends ArrayAdapter<Agricult
 
 		initView(view);
 		mTvName.setText(agricultural.name);
-		mTvTodayPrice.setText(String.valueOf(agricultural.priceToDayDomestic) + "/" + agricultural.unit);
-		mTvYesterdayPrice.setText(String.valueOf(agricultural.priceYesterdayDomestic) + "/" + agricultural.unit);
+		mTvTodayPrice.setText(String.valueOf(agricultural.priceTodayInternational) + "/" + agricultural.unit);
+		mTvYesterdayPrice.setText(String.valueOf(agricultural.priceYesterdayInternational) + "/" + agricultural.unit);
 		mTvStatus.setText(agricultural.status);
-		if (agricultural.priceToDayDomestic - agricultural.priceYesterdayDomestic > 0) {
+		if (agricultural.priceTodayInternational - agricultural.priceYesterdayInternational > 0) {
 			mIvStatus.setImageResource(R.drawable.ic_increase);
 			mIvStatus.setVisibility(View.VISIBLE);
 			mTvTodayPrice.setTextColor(getContext().getResources().getColor(R.color.tab_market_price_increase_color));
 			mTvStatus.setTextColor(getContext().getResources().getColor(R.color.tab_market_price_increase_color));
 		}
-		else if (agricultural.priceToDayDomestic - agricultural.priceYesterdayDomestic < 0) {
+		else if (agricultural.priceTodayInternational - agricultural.priceYesterdayInternational < 0) {
 			mIvStatus.setVisibility(View.VISIBLE);
 			mIvStatus.setImageResource(R.drawable.ic_decrease);
 			mTvTodayPrice.setTextColor(context.getResources().getColor(R.color.md_red_400));

@@ -4,7 +4,9 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +15,13 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 import com.example.uit.bannhanong.DTO.Agricultural;
@@ -39,12 +44,16 @@ import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class DomesticPriceFragment extends BaseMainFragment {
+    private EditText mTxtSearch;
+    private RelativeLayout mRlBack;
     private ImageView mBtnSearch;
     private ListView mLvAgricultural;
     private static String url="http://vietbao.vn/vn/gia-ca-thi-truong/";
     Document doc;
     ArrayList<Agricultural> listAgricultual = new ArrayList<>();
-    private Spinner spinnerProvince;
+    private Spinner spinnerProvince, spinnerCategory, spinnerFlutua;
+    ArrayList<String> provinceList;
+    ArrayList<Agricultural> listSpinerAgricultual = new ArrayList<>();
 
 
     public static DomesticPriceFragment newInstance() {
@@ -81,6 +90,7 @@ public class DomesticPriceFragment extends BaseMainFragment {
         mLvAgricultural.setAdapter(adapter);
 
         /*attackSearchView();*/
+        provinceList = getProvinceList(listAgricultual);
         attachSearch();
     }
 
@@ -92,9 +102,37 @@ public class DomesticPriceFragment extends BaseMainFragment {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.alert_search);
                 Button btn_ok = (Button) dialog.findViewById(R.id.btn_alert_search);
+
+                mRlBack = (RelativeLayout) dialog.findViewById(R.id.rl_back);
+                mRlBack.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                listSpinerAgricultual = listAgricultual;
+
+                mTxtSearch = (EditText) dialog.findViewById(R.id.txt_search);
+                mTxtSearch.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        filter(s.toString().toLowerCase(Locale.getDefault()));
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        filter(s.toString().toLowerCase(Locale.getDefault()));
+                    }
+                });
+
+
+                // Spiner Province
                 spinnerProvince = (Spinner) dialog.findViewById(R.id.spiner_province);
-                // Spiner
-                final ArrayList<String> provinceList = getProvinceList(listAgricultual);
                 ArrayAdapter arrayadapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, provinceList);
                 arrayadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerProvince.setAdapter(arrayadapter);
@@ -102,13 +140,12 @@ public class DomesticPriceFragment extends BaseMainFragment {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         String province = provinceList.get(position);
-                        ArrayList<AgriculturalPref> listSpinerAgricultual = null;
+                        listSpinerAgricultual = getAgriculturalListByProvince(province);
+                        listSpinerAgricultual = new ArrayList<Agricultural>();
                         if (position == 0) {
-                            for (Agricultural agriculturalPref : listAgricultual) {
-                            }
+                            listSpinerAgricultual = listAgricultual;
                         } else
-                            for (AgriculturalPref agriculturalPref : listSpinerAgricultual) {
-                            }
+                            listSpinerAgricultual = getAgriculturalListByProvince(province);
                     }
 
                     @Override
@@ -116,10 +153,49 @@ public class DomesticPriceFragment extends BaseMainFragment {
 
                     }
                 });
+
+                // Spiner Status
+                spinnerFlutua = (Spinner) dialog.findViewById(R.id.spiner_status);
+                ArrayAdapter arrayadapter2 = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, new String[]{"Mặt hàng tăng giá", "Mặt hàng giảm giá"});
+                arrayadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerFlutua.setAdapter(arrayadapter2);
+                spinnerFlutua.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        listSpinerAgricultual = new ArrayList<Agricultural>();
+                        if (position == 0) {
+                            for (Agricultural agricultural : listAgricultual) {
+                                if (agricultural.priceToDayDomestic - agricultural.priceYesterdayDomestic > 0)
+                                    listSpinerAgricultual.add(agricultural);
+                            }
+                        } else {
+                            for (Agricultural agricultural : listAgricultual) {
+                                if (agricultural.priceToDayDomestic - agricultural.priceYesterdayDomestic < 0)
+                                    listSpinerAgricultual.add(agricultural);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                // Spiner Category
+                spinnerCategory = (Spinner) dialog.findViewById(R.id.spiner_category);
+                ArrayAdapter arrayadapter1 = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, new String[]{"Thực phẩm", "Nông sản", "Các mặt hàng khác"});
+                arrayadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerCategory.setAdapter(arrayadapter1);
+
+                // Button Search
                 btn_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        AgriculturalPriceAdapter adapter = new AgriculturalPriceAdapter(getActivity(), R.layout.item_price_agricultural, listSpinerAgricultual);
+                        mLvAgricultural.setAdapter(adapter);
+                        listSpinerAgricultual = new ArrayList<Agricultural>();
+                        dialog.dismiss();
                     }
                 });
                 dialog.show();
@@ -133,17 +209,32 @@ public class DomesticPriceFragment extends BaseMainFragment {
         for (Agricultural agricultural : agriculturals) {
             if (!provinceList.contains(agricultural.province))
                 provinceList.add(agricultural.province);
-
         }
         return provinceList;
     }
 
-    public ArrayList<Agricultural> getAgriculturalListByProvince(ArrayList<Agricultural> list, String province) {
-        ArrayList<Agricultural> listAgricultural = new ArrayList<>();
-        for (Agricultural agricultural : list) {
-            if (agricultural.province.equals(province)) listAgricultural.add(agricultural);
+    public ArrayList<Agricultural> getAgriculturalListByProvince(String province) {
+        ArrayList<Agricultural> agriculturals = new ArrayList<>();
+        for (Agricultural agricultural : listAgricultual) {
+            if (agricultural.province.equals(province)) agriculturals.add(agricultural);
         }
-        return listAgricultural;
+        return agriculturals;
+    }
+
+    public void filter(String charSearching) {
+        listSpinerAgricultual = new ArrayList<>();
+        charSearching = charSearching.toLowerCase(Locale.getDefault());
+        listSpinerAgricultual.clear();
+        if (charSearching.length() == 0) {
+            this.listSpinerAgricultual.addAll(listAgricultual);
+        } else {
+            for (int i = 0; i < listAgricultual.size(); i++) {
+                if ((listAgricultual.get(i)).name.toLowerCase(Locale.getDefault()).contains(charSearching)) {
+                    listSpinerAgricultual.add(listAgricultual.get(i));
+                }
+            }
+        }
+
     }
 
     private class getDataTraTu extends AsyncTask<String,Void,String> {
@@ -192,7 +283,7 @@ public class DomesticPriceFragment extends BaseMainFragment {
                                 String value5 = el5.getElementsByTag("td").get(4).text().toString().replace(".", "").trim();
                                 String value6 = el5.getElementsByTag("td").get(5).text().toString().replace(".", "").trim();
                                 String value7 =  el5.getElementsByTag("td").get(6).text().toString();
-                                Log.i("helo", value5 + value6);
+
 
                                 Agricultural agricultural = new Agricultural();
                                 agricultural.id = (Integer.parseInt(value1.toString()));

@@ -38,9 +38,8 @@ import static android.content.res.Resources.*;
 public class HomeFragment extends BaseMainFragment {
 
     private RelativeLayout mRlTabDomestic, mRlTabInternational;
-    private TextView mTvTabDomestic, mTvTabInternational;
+    private TextView mTvTabDomestic, mTvTabInternational, mTvActiobarTille;
     private LinearLayout mLnTabDomestic, mLnTabInternational;
-
 
 
     AgriculturePricePagerAdapter mPagerAdapter;
@@ -67,6 +66,7 @@ public class HomeFragment extends BaseMainFragment {
     @Override
     protected void initContentViews(View view) {
         viewPager = CommonUtils.findViewById(view, R.id.vp_agricultural_price);
+        mTvActiobarTille = CommonUtils.findViewById(view, R.id.tv_actionbar_title);
         attachTab(view);
     }
 
@@ -77,6 +77,7 @@ public class HomeFragment extends BaseMainFragment {
 
     @Override
     protected void initData() {
+        mTvActiobarTille.setText("Nông sản");
         mPagerAdapter = new AgriculturePricePagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(mPagerAdapter);
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());

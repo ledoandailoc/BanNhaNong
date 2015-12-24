@@ -5,9 +5,12 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.uit.bannhanong.DTO.Store;
 import com.example.uit.bannhanong.R;
 import com.example.uit.bannhanong.base.BaseMainFragment;
+import com.example.uit.bannhanong.utils.CommonUtils;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -15,13 +18,19 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class LocationFragment extends BaseMainFragment {
 
+    private TextView mTvActiobarTille;
     private SupportMapFragment mMapFragment;
     private GoogleMap mMap;
 
     // Static LatLng Dummy
-    LatLng fromPosition = new LatLng(10.868406, 106.802996);
+    LatLng myPosition = new LatLng(10.868406, 106.802996);
+
+    ArrayList<Store> arrayListStore = new ArrayList<>();
+    ArrayList<LatLng> listLatLng = new ArrayList<>();
 
 
     public static LocationFragment newInstance() {
@@ -45,12 +54,13 @@ public class LocationFragment extends BaseMainFragment {
 
     @Override
     protected void initListener(View view) {
+        mTvActiobarTille = CommonUtils.findViewById(view, R.id.tv_actionbar_title);
 
     }
 
     @Override
     protected void initData() {
-
+        mTvActiobarTille.setText("Địa điểm");
         }
 
     @Override
@@ -70,14 +80,27 @@ public class LocationFragment extends BaseMainFragment {
         if (mMap == null) {
             mMap = mMapFragment.getMap();
             mMap.setMyLocationEnabled(true);
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(fromPosition));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(myPosition));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-            MarkerOptions startPoint = new MarkerOptions();
-            startPoint.position(fromPosition);
-            startPoint.title("Home");
-            startPoint.icon(BitmapDescriptorFactory.fromResource(R.drawable.home_location_icon));
-            mMap.addMarker(startPoint);
+            //Dummy data
+            Store store1 = new Store("Cỏ 2 Lá","Cửa hàng phân thuốc",10.868406,106.802996);
+            arrayListStore.add(store1);
+            Store store2 = new Store("Cỏ 3 Lá","Cửa hàng gạo",10.874484,106.800224);
+            arrayListStore.add(store2);
+            Store store3 = new Store("Cỏ 4 Lá","Cửa hàng cà phê",10.870499,106.797418);
+            arrayListStore.add(store3);
+            //end Create Dummy
+
+            for (Store store: arrayListStore) {
+                LatLng latLng = new LatLng(store.latitude, store.longtitude);
+                MarkerOptions startPoint = new MarkerOptions();
+                startPoint.position(latLng);
+                startPoint.title(store.name + " - " + store.category);
+                startPoint.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_store));
+                mMap.addMarker(startPoint);
+            }
+
         }
     }
 
