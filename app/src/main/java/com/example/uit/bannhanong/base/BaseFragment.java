@@ -49,8 +49,8 @@ abstract public class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        /*((MainActivity) (getActivity())).setViewBottomBar(isViewBottomBarView());
-        initTitleBar(view);*/
+        ((MainActivity) (getActivity())).setViewBottomBar(isViewBottomBarView());
+        /*initTitleBar(view);*/
         initContentViews(view);
         initListener(view);
         initData();

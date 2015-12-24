@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import com.example.uit.bannhanong.fragment.HomeFragment;
 import com.example.uit.bannhanong.fragment.LocationFragment;
 import com.example.uit.bannhanong.fragment.WorkshopFragment;
 
+import com.example.uit.bannhanong.listener.MainListener;
 import com.example.uit.bannhanong.utils.AnimationUtils;
 
 import com.example.uit.bannhanong.socketio.MySocket;
@@ -34,8 +36,9 @@ import com.example.uit.bannhanong.view.BottomMenuView;
 import java.util.ArrayList;
 
 public class MainActivity extends BaseFragmentActivity implements
-        View.OnClickListener, BottomMenuView.BottomMenuListener{
+        View.OnClickListener, BottomMenuView.BottomMenuListener, MainListener{
 
+    private View mBottomView;
     private RelativeLayout mRlTabPrice, mRlTabMarket, mRlTabWorkshop, mRlTabMap;
     private ImageView mIvTabPrice, mIvTabMarket, mIvTabWorkshop, mIvTabMap;
     private TextView mTvTabPrice, mTvTabMarket, mTvTabWorkshop, mTvTabMap;
@@ -66,6 +69,7 @@ public class MainActivity extends BaseFragmentActivity implements
     }
 
     private void attachTab() {
+        mBottomView = CommonUtils.findViewById(this, R.id.main_bottom_tab_container);
         mBottomMenuView = CommonUtils.findViewById(this, R.id.main_bottom_menu_view);
         mMenuBtn = CommonUtils.findViewById(this, R.id.main_menu_btn);
 
@@ -148,6 +152,7 @@ public class MainActivity extends BaseFragmentActivity implements
 
 
     private void unSelectAllTab() {
+
         mIvTabPrice.setImageResource(R.drawable.icon_tab_price);
         mTvTabPrice.setTextColor(getResources().getColor(R.color.tab_text_color));
         mTvTabPrice.setTypeface(null, Typeface.NORMAL);
@@ -192,5 +197,16 @@ public class MainActivity extends BaseFragmentActivity implements
         mIsViewBottomMenu = !mIsViewBottomMenu;
         this.mBottomMenuView.setVisibility(View.GONE);
     }
+
+    @Override
+    public void setViewBottomBar(boolean needToView) {
+        if (needToView) {
+            mBottomView.setVisibility(View.VISIBLE);
+            mMenuBtn.setVisibility(View.VISIBLE);
+        } else {
+            mBottomView.setVisibility(View.GONE);
+            mMenuBtn.setVisibility(View.GONE);
+        }
+        }
 
 }

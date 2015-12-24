@@ -18,6 +18,7 @@ import com.example.uit.bannhanong.utils.CommonUtils;
 import com.example.uit.bannhanong.view.CircleImageView;
 
 public class EngineerDetailFragment extends BaseMainFragment {
+
     @Override
     protected boolean isViewBottomBarView() {
         return false;
