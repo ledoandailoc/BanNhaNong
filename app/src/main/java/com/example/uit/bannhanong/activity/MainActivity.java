@@ -1,5 +1,6 @@
 package com.example.uit.bannhanong.activity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,6 +34,7 @@ import com.example.uit.bannhanong.utils.AnimationUtils;
 import com.example.uit.bannhanong.socketio.MySocket;
 
 import com.example.uit.bannhanong.utils.CommonUtils;
+import com.example.uit.bannhanong.utils.UserPref;
 import com.example.uit.bannhanong.view.BottomMenuView;
 
 import java.util.ArrayList;
@@ -42,7 +44,7 @@ public class MainActivity extends BaseFragmentActivity implements
 
     private View mBottomView;
     private RelativeLayout mRlTabPrice, mRlTabMarket, mRlTabWorkshop, mRlTabMap, mRlBg;
-    private ImageView mIvTabPrice, mIvTabMarket, mIvTabWorkshop, mIvTabMap;
+    private ImageView mIvTabPrice, mIvTabMarket, mIvTabWorkshop, mIvTabMap, mIvLogout;
     private TextView mTvTabPrice, mTvTabMarket, mTvTabWorkshop, mTvTabMap;
     private BottomMenuView mBottomMenuView;
     private View mMenuBtn;
@@ -66,7 +68,7 @@ public class MainActivity extends BaseFragmentActivity implements
         setContentView(R.layout.activity_main);
         Bundle bundle = getIntent().getExtras();
         MainApplication.setMySocket(new MySocket(this));
-        /*MainApplication.getMySocket().connectSocket();*/
+        MainApplication.getMySocket().connectSocket();
         attachTab();
     }
 
@@ -85,6 +87,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mIvTabMarket = CommonUtils.findViewById(this, R.id.tab_iv_activity);
         mIvTabWorkshop = CommonUtils.findViewById(this, R.id.tab_iv_training);
         mIvTabMap = CommonUtils.findViewById(this, R.id.tab_iv_map);
+        mIvLogout = CommonUtils.findViewById(this, R.id.iv_logout);
 
         mTvTabPrice = CommonUtils.findViewById(this, R.id.tab_tv_home);
         mTvTabMarket = CommonUtils.findViewById(this, R.id.tab_tv_activity);
@@ -148,6 +151,15 @@ public class MainActivity extends BaseFragmentActivity implements
         mMenuBtn.setOnClickListener(this);
         ivMenuVitualFence.setOnClickListener(this);
         mBottomMenuView.setBottomMenuListener(this);
+        mIvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserPref userPref = new UserPref();
+                userPref.setUser(null);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         ivMenuVitualLeash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,7 +208,6 @@ public class MainActivity extends BaseFragmentActivity implements
                 this.mBottomMenuView.setVisibility(View.GONE);
                 EngineerPublicFragment engineerPublicFragment = new EngineerPublicFragment();
                 showFragmentWithClearStackMode(engineerPublicFragment);
-
             default:
                 break;
         }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/bg_item_engineer_radius"
+        >
+        <ImageView
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            android:cropToPadding="true"
+            android:id="@+id/iv_avatar_engineer"
+            android:src="@drawable/avatar_engineer"
+            android:layout_margin="2.5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đỗ Anh Tuấn"
+            android:textSize="17dp"
+            android:layout_toRightOf="@+id/iv_avatar_engineer"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/tv_name_engineer"
+            android:textStyle="bold"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tin nhắn: Hello"
+            android:textSize="14dp"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/md_grey_800"
+            android:layout_toRightOf="@+id/iv_avatar_engineer"
+            android:layout_marginTop="55dp"
+            android:id="@+id/tv_time_engineer"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_item_engineer_type_radius"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_place"
+            android:layout_marginRight="8dp">
+
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

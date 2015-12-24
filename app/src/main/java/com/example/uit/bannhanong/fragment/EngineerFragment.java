@@ -33,10 +33,6 @@ public class EngineerFragment extends BaseMainFragment {
 
     private ListView mLvEngineer;
     List<Engineer> listEngineer;
-    Spinner spinnerProvince;
-    SearchView searchView;
-    private ListView mLvAgricultural;
-    ArrayList<Agricultural> listAgricultual = new ArrayList<>();
     GetListUserRequest mGetListUserRequest;
     EngineerAdapter engineerAdapter;
 

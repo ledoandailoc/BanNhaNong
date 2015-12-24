@@ -104,8 +104,8 @@ public class ChatFragment extends BaseMainFragment {
         mIvBack.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                WorkshopFragment workshopFragment = new WorkshopFragment();
-                showFragmentWithClearStackMode(workshopFragment);
+                EngineerHostFragment engineerHostFragment = new EngineerHostFragment();
+                showFragmentWithClearStackMode(engineerHostFragment);
             }
         });
     }

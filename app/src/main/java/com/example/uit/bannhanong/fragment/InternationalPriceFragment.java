@@ -69,7 +69,7 @@ public class InternationalPriceFragment extends BaseMainFragment {
     @Override
     protected void initData() {
 
-        LoadPage("");
+        //LoadPage("");
         AgriculturalInternationalPriceAdapter adapter = new AgriculturalInternationalPriceAdapter(getActivity(), R.layout.item_international_price_agricultural, listAgricultual);
         mLvAgricultural.setAdapter(adapter);
 

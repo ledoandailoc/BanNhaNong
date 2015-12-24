@@ -18,6 +18,7 @@ public class Engineer implements Serializable {
     public String avatar;
     public String token;
     public String place = "Đắc Lắk";
+    public String message;
     public String latitude, longitude;
 
     public Engineer() {
@@ -30,6 +31,9 @@ public class Engineer implements Serializable {
         }
         if (json.has("longitude")) {
             this.longitude = json.getString("longitude");
+        }
+        if (json.has("message")) {
+            this.message = json.getString("message");
         }
         if (json.has("username")) {
             this.username = json.getString("username");
