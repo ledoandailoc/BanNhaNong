@@ -3,9 +3,12 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,10 +30,13 @@ public class LoginActivity extends Activity {
 
     private EditText mEdtEmail, mEditPassword;
     private Button mBtnLogin;
-    private TextView mTvSignup;
-
+    private TextView mTvSignup, mTvTrangThai;
+    private ProgressBar progressBar;
+    private RelativeLayout mRlProgressBar;
+    int progressbar = 0;
     private LoginRequest mLoginRequest;
-
+    Handler handler;
+    int i = 0, time = 300;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,40 @@ public class LoginActivity extends Activity {
         mEditPassword = (EditText) findViewById(R.id.edtPassword);
         mBtnLogin = (Button) findViewById(R.id.btnLogin);
         mTvSignup = (TextView) findViewById(R.id.tvSignup);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mRlProgressBar = (RelativeLayout) findViewById(R.id.rl_progressbar);
+        mTvTrangThai = (TextView) findViewById(R.id.tv_trang_thai);
+
+
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(i<=100) {
+                    progressBar.setProgress(i);
+                    mTvTrangThai.setText(String.valueOf(i)+ "%");
+                    if(i > 100)
+                        mTvTrangThai.setText("Finish");
+
+                    if(i > 50 && i <77){
+                        i+=3;
+                        time = 4000;
+                    }
+                    else if(i<=77)
+                        i+=7;
+                    else
+                    {
+                        i+=15;
+                        time = 3000;
+                    }
+                } else {
+                    mRlProgressBar.setVisibility(View.GONE);
+                }
+                handler = new Handler();
+                handler.postDelayed(this, time);
+            }
+        }, time);
+
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,18 +134,22 @@ public class LoginActivity extends Activity {
             protected void onSuccess(LoginResponse entity, int statusCode, String message) {
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
+
                 }
                 UserPref userPref = new UserPref();
                 userPref.setUser(entity.data);
                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
+
+
             }
 
             @Override
             protected void onError(int statusCode, String message) {
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
+
                 }
                 Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
             }
@@ -119,5 +163,26 @@ public class LoginActivity extends Activity {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
-    
+
+
+    public class ThreadX extends Thread {
+
+        public ThreadX(String name)
+        {
+            super(name);
+        }
+        public void run()
+        {
+            System.out.println("Tên luồng:" + getName());
+            for (int  i = 0; i <= 100; i+=5){
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+                }
+                progressBar.setProgress(i);
+            }
+        }
+
+    }
+
 }

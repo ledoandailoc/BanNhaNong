@@ -92,7 +92,7 @@ public class EngineerFragment extends BaseMainFragment {
     }
 
     private void getListUsers() {
-        String api = "http://192.168.38.1:3000/users/getAllFriends";
+        String api = "http://192.168.38.1:3000/users/getEngineer";
         mGetListUserRequest = new GetListUserRequest(Method.GET, /*ApiLink.getContactLink()*/api, null, null) {
             @Override
             protected void onStart() {

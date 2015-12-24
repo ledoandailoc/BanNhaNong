@@ -93,7 +93,7 @@ public class EngineerDetailFragment extends BaseMainFragment {
     protected void initData() {
         ImageLoaderUtil.display(engineer.avatar, mCivAvatar);
         mTvName.setText(engineer.username);
-        mTvCountry.setText(engineer.country);
+        mTvCountry.setText(engineer.place);
         mTvPhoneNumber.setText(engineer.phone);
         mTvSpecialized.setText(engineer.specialized);
     }
