@@ -2,13 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/actionbar_height"
+    android:background="@color/actionbar_bg_color"
+    android:layout_alignParentTop="true"
     >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/actionbar_height"
-        android:background="@color/actionbar_bg_color">
-
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="20dp"
@@ -16,23 +12,14 @@
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
             android:src="@drawable/icon_back"/>
-
         <TextView
+            android:id="@+id/title"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/actionbar_title_size"
             android:textColor="@color/actionbar_title_color"
-            android:text="Hội thảo"/>
+            android:text="Tương tác kĩ sư"/>
 
-        <ImageView
-            android:layout_width="@dimen/actionbar_ic_setting_size"
-            android:layout_height="@dimen/actionbar_ic_setting_size"
-            android:layout_marginRight="@dimen/common_distance_lv_1"
-            android:src="@drawable/ic_search"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/actionbar_iv_search" />
-    </RelativeLayout>
+
 </RelativeLayout>

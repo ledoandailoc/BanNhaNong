@@ -8,6 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/actionbar_height"
         android:background="@color/actionbar_bg_color">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_back"/>
 
         <TextView
             android:layout_centerInParent="true"

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.example.uit.bannhanong.utils.CommonUtils;
 import com.example.uit.bannhanong.view.CircleImageView;
 
 public class EngineerDetailFragment extends BaseMainFragment {
+
     @Override
     protected boolean isViewBottomBarView() {
         return false;
@@ -26,6 +28,7 @@ public class EngineerDetailFragment extends BaseMainFragment {
     RelativeLayout mRlPhoneNumber, rl_message;
     CircleImageView mCivAvatar;
     TextView mTvName, mTvPhoneNumber, mTvSpecialized, mTvCountry;
+    private ImageView mIvBack;
 
     Engineer engineer;
 
@@ -53,6 +56,7 @@ public class EngineerDetailFragment extends BaseMainFragment {
         mTvPhoneNumber = CommonUtils.findViewById(view, R.id.tv_phone_number);
         mTvCountry = CommonUtils.findViewById(view, R.id.tv_country);
         mTvSpecialized = CommonUtils.findViewById(view, R.id.tv_specialized);
+        mIvBack = CommonUtils.findViewById(view, R.id.iv_back);
 
         engineer = (Engineer) getArguments().getSerializable("1");
     }
@@ -76,6 +80,13 @@ public class EngineerDetailFragment extends BaseMainFragment {
                 showFragmentWithClearStackMode(engineerDetailFragment);
             }
         });
+        mIvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WorkshopFragment workshopFragment = new WorkshopFragment();
+                showFragmentWithClearStackMode(workshopFragment);
+            }
+        });
     }
 
     @Override
@@ -86,6 +97,4 @@ public class EngineerDetailFragment extends BaseMainFragment {
         mTvPhoneNumber.setText(engineer.phone);
         mTvSpecialized.setText(engineer.specialized);
     }
-
-
 }

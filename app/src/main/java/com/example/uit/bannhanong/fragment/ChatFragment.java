@@ -1,6 +1,7 @@
 package com.example.uit.bannhanong.fragment;
 
 import android.app.Activity;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,10 +50,16 @@ public class ChatFragment extends BaseMainFragment {
     private MessageAdapter mAdapter;
     private String userIDrequest;
     UserPref userPref;
+    private ImageView mIvBack;
+
     private GetListMessageByUserIdRequest mGetListMessageByUserIdRequest;
 
     public static ChatFragment newInstance() {
         return new ChatFragment();
+    }
+    @Override
+    protected boolean isViewBottomBarView() {
+        return false;
     }
 
     @Override
@@ -69,15 +76,13 @@ public class ChatFragment extends BaseMainFragment {
 
     @Override
     protected void initContentViews(View view) {
-        TextView title  = CommonUtils.findViewById(view,R.id.actionbar_tvTitile);
-        title.setText("Tin nhắn");
-
         receiverId = getArguments().getString("2");
 
         mBtnSend = CommonUtils.findViewById(view, R.id.mBtnSend);
         mLvMessage = CommonUtils.findViewById(view,R.id.listView);
         mAdapter = new MessageAdapter(getActivity(), mList);
         mEdtMessage = CommonUtils.findViewById(view, R.id.edt_chat_message);
+        mIvBack = CommonUtils.findViewById(view, R.id.iv_back);
 
         mLvMessage.setAdapter(mAdapter);
         userPref = new UserPref();
@@ -96,7 +101,13 @@ public class ChatFragment extends BaseMainFragment {
 
     @Override
     protected void initListener(View view) {
-
+        mIvBack.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WorkshopFragment workshopFragment = new WorkshopFragment();
+                showFragmentWithClearStackMode(workshopFragment);
+            }
+        });
     }
 
     @Override

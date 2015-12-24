@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Engineer implements Serializable {
 
     public String _id;
-    public String username;
+    public String username = "Nguyễn Văn Nông Nghiệp";
     public String phone = "0985735314";
     public String country = "Đắc Lắc";
     public String specialized = "Kĩ sư nông nghiệp";

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class EngineerPublicFragment extends BaseMainFragment {
     UserPref userPref;
     UpdateRequest mUpdateRequest;
     Button mBtnApply;
+    ImageView mIvBack;
 
     public static EngineerPublicFragment newInstance() {
         return new EngineerPublicFragment();
@@ -52,6 +54,8 @@ public class EngineerPublicFragment extends BaseMainFragment {
         mEdtSpecialized = CommonUtils.findViewById(view, R.id.edt_specialized);
         mEdtPlace = CommonUtils.findViewById(view, R.id.edt_place);
         mBtnApply = CommonUtils.findViewById(view, R.id.btn_apply);
+        mIvBack = CommonUtils.findViewById(view, R.id.iv_back);
+
         userPref = new UserPref();
     }
 
@@ -61,6 +65,13 @@ public class EngineerPublicFragment extends BaseMainFragment {
             @Override
             public void onClick(View v) {
                 update();
+            }
+        });
+        mIvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WorkshopFragment workshopFragment = new WorkshopFragment();
+                showFragmentWithClearStackMode(workshopFragment);
             }
         });
     }

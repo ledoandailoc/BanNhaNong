@@ -4,24 +4,26 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.uit.bannhanong.DTO.Engineer;
 import com.example.uit.bannhanong.R;
-import com.example.uit.bannhanong.adapter.EngineerAdapter;
 import com.example.uit.bannhanong.base.BaseMainFragment;
-import com.example.uit.bannhanong.connection.base.Method;
-import com.example.uit.bannhanong.connection.request.GetListUserRequest;
-import com.example.uit.bannhanong.connection.response.ListUserResponse;
 import com.example.uit.bannhanong.utils.CommonUtils;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EngineerHostFragment extends BaseMainFragment {
 
+    @Override
+    protected boolean isViewBottomBarView() {
+        return false;
+    }
+
+    ImageView mIvBack;
 
     public static EngineerHostFragment newInstance() {
         return new EngineerHostFragment();
@@ -38,10 +40,21 @@ public class EngineerHostFragment extends BaseMainFragment {
 
     @Override
     protected void initContentViews(View view) {
+        TextView title = CommonUtils.findViewById(view, R.id.title);
+        title.setText("Lịch sử thoại");
+
+        mIvBack = CommonUtils.findViewById(view, R.id.iv_back);
     }
 
     @Override
     protected void initListener(View view) {
+        mIvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WorkshopFragment workshopFragment = new WorkshopFragment();
+                showFragmentWithClearStackMode(workshopFragment);
+            }
+        });
     }
 
     @Override

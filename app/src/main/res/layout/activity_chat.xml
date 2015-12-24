@@ -7,7 +7,8 @@
 
     <include
         android:id="@+id/actionbar"
-        layout="@layout/actionbar_top_activity" />
+        layout="@layout/actionbar_chat"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:id="@+id/linearLayout5"
-            android:background="@color/action_bar_bg_selected">
+            android:background="@color/app_orange">
 
             <EditText
                 android:layout_marginLeft="6dp"
@@ -33,8 +34,8 @@
                 />
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="7dp"
                 android:id="@+id/mBtnSend"
                 android:src="@drawable/icon_send"

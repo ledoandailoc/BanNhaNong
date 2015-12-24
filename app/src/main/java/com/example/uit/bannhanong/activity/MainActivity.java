@@ -7,9 +7,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.uit.bannhanong.DTO.Agricultural;
@@ -25,6 +27,7 @@ import com.example.uit.bannhanong.fragment.HomeFragment;
 import com.example.uit.bannhanong.fragment.LocationFragment;
 import com.example.uit.bannhanong.fragment.WorkshopFragment;
 
+import com.example.uit.bannhanong.listener.MainListener;
 import com.example.uit.bannhanong.utils.AnimationUtils;
 
 import com.example.uit.bannhanong.socketio.MySocket;
@@ -35,9 +38,10 @@ import com.example.uit.bannhanong.view.BottomMenuView;
 import java.util.ArrayList;
 
 public class MainActivity extends BaseFragmentActivity implements
-        View.OnClickListener, BottomMenuView.BottomMenuListener{
+        View.OnClickListener, BottomMenuView.BottomMenuListener, MainListener{
 
-    private RelativeLayout mRlTabPrice, mRlTabMarket, mRlTabWorkshop, mRlTabMap;
+    private View mBottomView;
+    private RelativeLayout mRlTabPrice, mRlTabMarket, mRlTabWorkshop, mRlTabMap, mRlBg;
     private ImageView mIvTabPrice, mIvTabMarket, mIvTabWorkshop, mIvTabMap;
     private TextView mTvTabPrice, mTvTabMarket, mTvTabWorkshop, mTvTabMap;
     private BottomMenuView mBottomMenuView;
@@ -67,6 +71,7 @@ public class MainActivity extends BaseFragmentActivity implements
     }
 
     private void attachTab() {
+        mBottomView = CommonUtils.findViewById(this, R.id.main_bottom_tab_container);
         mBottomMenuView = CommonUtils.findViewById(this, R.id.main_bottom_menu_view);
         mMenuBtn = CommonUtils.findViewById(this, R.id.main_menu_btn);
 
@@ -74,6 +79,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mRlTabMarket = CommonUtils.findViewById(this, R.id.main_activity_tab);
         mRlTabWorkshop = CommonUtils.findViewById(this, R.id.main_training_tab);
         mRlTabMap = CommonUtils.findViewById(this, R.id.main_map_tab);
+        mRlBg = CommonUtils.findViewById(this, R.id.rl_bg);
 
         mIvTabPrice = CommonUtils.findViewById(this, R.id.tab_iv_home);
         mIvTabMarket = CommonUtils.findViewById(this, R.id.tab_iv_activity);
@@ -141,14 +147,23 @@ public class MainActivity extends BaseFragmentActivity implements
 
         mMenuBtn.setOnClickListener(this);
         ivMenuVitualFence.setOnClickListener(this);
-        ivMenuVitualLeash.setOnClickListener(this);
         mBottomMenuView.setBottomMenuListener(this);
+        ivMenuVitualLeash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBottomMenuView.setVisibility(View.GONE);
+                EngineerHostFragment host = new EngineerHostFragment();
+                showFragmentWithClearStackMode(host);
+            }
+        });
+
 
 
     }
 
 
     private void unSelectAllTab() {
+
         mIvTabPrice.setImageResource(R.drawable.icon_tab_price);
         mTvTabPrice.setTextColor(getResources().getColor(R.color.tab_text_color));
         mTvTabPrice.setTypeface(null, Typeface.NORMAL);
@@ -178,8 +193,10 @@ public class MainActivity extends BaseFragmentActivity implements
                 mIsViewBottomMenu = !mIsViewBottomMenu;
                 break;
             case R.id.menu_virtual_fence_iv:
+                this.mBottomMenuView.setVisibility(View.GONE);
                 EngineerPublicFragment engineerPublicFragment = new EngineerPublicFragment();
                 showFragmentWithClearStackMode(engineerPublicFragment);
+
             default:
                 break;
         }
@@ -193,5 +210,16 @@ public class MainActivity extends BaseFragmentActivity implements
         mIsViewBottomMenu = !mIsViewBottomMenu;
         this.mBottomMenuView.setVisibility(View.GONE);
     }
+
+    @Override
+    public void setViewBottomBar(boolean needToView) {
+        if (needToView) {
+            mBottomView.setVisibility(View.VISIBLE);
+            mMenuBtn.setVisibility(View.VISIBLE);
+        } else {
+            mBottomView.setVisibility(View.GONE);
+            mMenuBtn.setVisibility(View.GONE);
+        }
+        }
 
 }
