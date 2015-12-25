@@ -18,7 +18,7 @@ public class RootActivity extends Activity {
             startActivity(i);
             finish();
         } else {
-            Intent i = new Intent(this, LoginActivity.class);
+            Intent i = new Intent(this, ProgressBarActivity.class);
             startActivity(i);
             finish();
         }

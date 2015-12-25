@@ -26,11 +26,11 @@
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="13dp"
-                android:src="@drawable/avatar_1" />
+                android:src="@drawable/avatar1" />
 
 
             <LinearLayout
-                android:id="@+id/circle_bg"
+                android:id="@+id/avatar1"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_alignParentEnd="true"
@@ -49,16 +49,17 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="16dp"
-            android:src="@drawable/icon_logout"
+            android:src="@drawable/ic_exit"
             android:layout_marginRight="16dp"/>
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relativeLayout5"
             android:layout_centerHorizontal="true"
-            android:text="Miracle"
+            android:text="Nguyễn Văn Nông Dân"
             android:textColor="#fff"
             android:textSize="20dp" />
 
@@ -68,22 +69,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/name_tv"
             android:layout_centerHorizontal="true"
-            android:text="Nông dân"
-            android:textColor="@color/tab_record_text_color"
+            android:text="Nông dân hạng 1"
+            android:textColor="#fff"
             android:textSize="15dp" />
 
     </RelativeLayout>
-
-    <include
-        android:id="@+id/tab"
-        layout="@layout/tab_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/tab_height"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout6" />
 
     <RelativeLayout
         android:id="@+id/profile_container"
@@ -91,6 +81,68 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tab" />
+        android:layout_below="@+id/relativeLayout6" >
+
+        <TextView
+            android:textColor="#ee5900"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quê quán: Bà Rịa - Vũng Tàu"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:id="@+id/textView8" />
+
+        <TextView
+            android:layout_marginTop="@dimen/common_distance_lv_2"
+            android:textColor="#ee5900"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nghề nghiệp: Nông dân"
+            android:id="@+id/textView7"
+            android:layout_below="@+id/textView8"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_marginTop="@dimen/common_distance_lv_2"
+            android:textColor="#ee5900"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuổi: 27"
+            android:id="@+id/textView12"
+            android:layout_below="@+id/textView7"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_marginTop="@dimen/common_distance_lv_2"
+            android:textColor="#ee5900"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giới tính: Nam"
+            android:id="@+id/textView13"
+            android:layout_below="@+id/textView12"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_marginTop="@dimen/common_distance_lv_2"
+            android:textColor="#ee5900"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số điện thoại: 01659528808"
+            android:id="@+id/textView14"
+            android:layout_below="@+id/textView13"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_marginTop="@dimen/common_distance_lv_2"
+            android:textColor="#ee5900"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: nguyenvannongdan@gmail.com"
+            android:id="@+id/textView16"
+            android:layout_below="@+id/textView14"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
