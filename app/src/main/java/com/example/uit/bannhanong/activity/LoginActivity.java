@@ -36,7 +36,7 @@ public class LoginActivity extends Activity {
     int progressbar = 0;
     private LoginRequest mLoginRequest;
     Handler handler;
-    int i = 0, time = 300;
+    int i = 1, time = 300;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +58,7 @@ public class LoginActivity extends Activity {
                 if(i<=100) {
                     progressBar.setProgress(i);
                     mTvTrangThai.setText(String.valueOf(i)+ "%");
-                    if(i > 100)
+                    if(i == 100)
                         mTvTrangThai.setText("Finish");
 
                     if(i > 50 && i <77){
@@ -67,10 +67,12 @@ public class LoginActivity extends Activity {
                     }
                     else if(i<=77)
                         i+=7;
-                    else
+                    else if (i <93)
                     {
                         i+=15;
                         time = 3000;
+                    } else {
+                        i+=7;
                     }
                 } else {
                     mRlProgressBar.setVisibility(View.GONE);
